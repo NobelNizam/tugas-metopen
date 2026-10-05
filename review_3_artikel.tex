@@ -1,0 +1,220 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[landscape,margin=1.5cm,top=1.8cm,bottom=1.8cm]{geometry}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!60!black,citecolor=blue!60!black]{hyperref}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newenvironment{cellitems}
+  {\vspace{-2pt}\begin{itemize}\setlength{\itemsep}{1.5pt}\setlength{\parskip}{0pt}\setlength{\topsep}{1pt}}
+  {\end{itemize}\vspace{-2pt}}
+
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\footnotesize\thepage}
+\fancyfoot[R]{\footnotesize Review 3 Artikel -- Medallion Architecture}
+
+\captionsetup{font=small,labelfont=bf}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries Review Tiga Artikel Ilmiah}\\[4pt]
+  {\large Medallion Architecture dan Rekayasa Data Berbasis Awan}\\[6pt]
+  {\small Nobel Nizam F -- 123450117}
+\end{center}
+
+\vspace{6pt}
+
+\setlength{\LTpre}{4pt}
+\setlength{\LTpost}{8pt}
+
+\footnotesize
+
+\begin{longtable}{|L{2.5cm}|L{7.65cm}|L{7.65cm}|L{7.65cm}|}
+\hline
+\textbf{Aspek} &
+\textbf{Artikel 1 -- IJAIBDCMS} &
+\textbf{Artikel 2 -- JISEM} &
+\textbf{Artikel 3 -- IJIES} \\
+\hline
+\endfirsthead
+
+\multicolumn{4}{|l|}{\itshape Lanjutan dari tabel sebelumnya...} \\
+\hline
+\textbf{Aspek} &
+\textbf{Artikel 1 -- IJAIBDCMS} &
+\textbf{Artikel 2 -- JISEM} &
+\textbf{Artikel 3 -- IJIES} \\
+\hline
+\endhead
+
+\multicolumn{4}{|r|}{\itshape Lanjut ke halaman berikutnya} \\
+\hline
+\endfoot
+
+\hline
+\endlastfoot
+
+% ---------------- JUDUL ----------------
+\textbf{Judul} &
+An Empirical Evaluation of the Medallion Architecture on Databricks and Apache Spark with Snowflake: Throughput, Latency, and Cost for Batch and Real-Time Ingestion Patterns &
+The Medallion Architecture in Data Engineering: A Layered Approach to Data Quality and Governance &
+Designing a Scalable ELT Pipeline for Airbnb Analytics Using Medallion Architecture and Cloud-Based Data Engineering \\
+\hline
+
+% ---------------- PENULIS ----------------
+\textbf{Nama Penulis} &
+Laxmi Madhu Kumar Brahmandam (Independent Researcher, Texas, Amerika Serikat) &
+Sreedhar Pasupuleti (Independent Researcher, Amerika Serikat) &
+Christian Arthur (University of Technology Sydney, Australia); Samuel Radjawane (Universitas Kristen Satya Wacana, Salatiga, Indonesia) \\
+\hline
+
+% ---------------- TAHUN ----------------
+\textbf{Tahun Terbit} &
+2024 -- Vol. 5, No. 3, hlm. 197--206, ISSN 3050-9416, DOI 10.63282/3050-9416.IJAIBDCMS-V5I3P122 &
+2025 -- Vol. 10 (62s), e-ISSN 2468-4376 (diterima 13 November 2025) &
+2026 -- Vol. 3, No. 2 (dipublikasikan 30 Mei 2026), DOI 10.62951/ijies.v3i2.353 \\
+\hline
+
+% ---------------- PERMASALAHAN ----------------
+\textbf{Permasalahan} &
+\begin{cellitems}
+  \item Arsitektur medallion (Bronze/Silver/Gold) telah diadopsi luas sebagai rancang bangun rujukan pipeline lakehouse, namun bukti peer-reviewed yang menguantifikasi throughput, latensi ujung-ke-ujung, dan biaya satuan pada jalur ingest yang beragam masih terbatas.
+  \item Belum banyak evaluasi empiris untuk beban kerja campuran (batch sekaligus real-time), terutama bila layer Gold dimaterialisasi di data warehouse terpisah (Snowflake) alih-alih dibaca langsung dari danau data.
+\end{cellitems} &
+\begin{cellitems}
+  \item Organisasi menghadapi volume data heterogen yang tumbuh cepat sehingga memerlukan rancang bangun data yang terstruktur.
+  \item Data warehouse tradisional kurang fleksibel terhadap perubahan skema dan beban kerja baru, sedangkan data lake sederhana lemah dalam penataan, penjaminan kualitas, dan tata kelola data.
+  \item Belum ada sintesis yang menjelaskan bagaimana arsitektur medallion menangani masalah kualitas data sekaligus tata kelola secara berlapis.
+\end{cellitems} &
+\begin{cellitems}
+  \item Organisasi masih menghadapi \textit{data silos}, skema yang tidak konsisten, ketertelusuran terbatas, dan alur kerja manual yang tidak efisien.
+  \item Integrasi data listing Airbnb dengan data demografi eksternal sulit dilakukan karena perbedaan sumber, format, dan tingkat geografis.
+  \item Studi terkait penerapan ELT terpadu pada analitik sewa jangka pendek yang menggabungkan data operasional platform dengan data sensus masih langka (celah riset).
+\end{cellitems} \\
+\hline
+
+% ---------------- TUJUAN ----------------
+\textbf{Tujuan Penelitian} &
+Melakukan evaluasi empiris arsitektur medallion yang diwujudkan pada Databricks dan Apache Spark dengan Snowflake sebagai \textit{gold-layer warehouse}, yaitu mengukur throughput, latensi p99, dan biaya per terabyte pada tiga jalur ingest dan tiga tier skala, guna menilai apakah satu pola rekayasa tunggal mampu melayani konsumen batch dan real-time sekaligus. &
+Menjelaskan arsitektur medallion sebagai pendekatan berlapis untuk manajemen kualitas data dan tata kelola (\textit{governance}), menganalisis peran tiap lapisan Bronze--Silver--Gold, merumuskan strategi implementasi terbaik, serta membandingkannya dengan data warehouse tradisional dan arsitektur data lake. &
+Merancang dan mengimplementasikan pipeline ELT ujung-ke-ujung yang mengintegrasikan data listing Airbnb di Sydney dengan data demografi Australian Bureau of Statistics (ABS) menggunakan Google Cloud Storage, Apache Airflow, PostgreSQL, dan dbt dalam kerangka Medallion Architecture, sekaligus menghasilkan analitik bisnis yang terukul (\textit{traceable}) dan terreproduksi. \\
+\hline
+
+% ---------------- METODE ----------------
+\textbf{Metode Penelitian} &
+\begin{cellitems}
+  \item \textbf{Jenis:} studi kuantitatif empiris (observasional atas portofolio \textit{production deployments} + \textit{controlled reference deployment}).
+  \item \textbf{Variabel:} tiga jalur ingest $\times$ tiga tier skala: Auto Loader (file), Apache Kafka (stream), Debezium CDC; tier small 50 GB/hari, medium 2 TB/hari, large 20 TB/hari.
+  \item \textbf{Protokol:} konfigurasi cluster dikunci tetap; setiap konfigurasi dijalankan 24 jam dengan jendela steady-state 1 jam di tengah, \textit{warm-up} 5 menit dikecualikan; probe latensi disuntik tiap 1 detik untuk metrik p99 dari waktu peristiwa sumber hingga ketersediaan layer Gold.
+  \item \textbf{Metrik:} throughput (MB/s per \textit{active task}), latensi p99 (detik), biaya satuan (USD/TB) dari jam komputasi pada tarif \textit{on-demand}; setiap konfigurasi dijalankan pada dua jendela berbeda hari dan diambil median-nya.
+\end{cellitems} &
+\begin{cellitems}
+  \item \textbf{Jenis:} kajian pustaka naratif bersifat konseptual-deskriptif (literature review), tanpa eksperimen, pengukuran, maupun studi kasus lapangan.
+  \item \textbf{Sumber:} sintesis publikasi terdahulu tentang \textit{progressive refinement}, ETL/ELT, \textit{schema-on-read}, pemrosesan inkremental, \textit{separation of concerns}, \textit{data lineage}, dan prinsip \textit{data lake}.
+  \item \textbf{Kerangka analisis:} tiga bagian -- fondasi teoretis (Tabel 1), analisis per lapisan Bronze--Silver--Gold, serta strategi implementasi (Tabel 3) dan analisis komparatif terhadap data warehouse, data lake, dan kerangka mikroservis (Tabel 4).
+  \item \textbf{Keluaran:} argumen kualitatif dan tabel perbandingan karakteristik, bukan angka benchmark.
+\end{cellitems} &
+\begin{cellitems}
+  \item \textbf{Jenis:} studi implementasi rekayasa perangkat lunak (\textit{design/implementation study}) dengan analitik deskriptif dan korelasional.
+  \item \textbf{Data:} ekspor bulanan listing Airbnb Sydney (mis.\ 05\_2020.csv dst.) + data sensus ABS Census 2016 G01 \& G02 pada tingkat LGA, beserta pemetaan kode LGA dan suburb.
+  \item \textbf{Rancang bangun:} skema berlapis pada PostgreSQL -- Bronze (tabel mentah + \texttt{source\_file}, \texttt{load\_timestamp}), Silver (staging + \textit{dbt snapshot} SCD Type 2), Gold (bintang: \texttt{fact\_listing}, \texttt{dim\_host/listing/suburb/lga}, \textit{data mart}).
+  \item \textbf{Orkestrasi:} dua DAG Airflow (\texttt{bronze\_load\_first\_time}, \texttt{bronze\_monthly\_append}); validasi skema, \textit{referential integrity}, \textit{snapshot testing} dbt, logging lineage.
+  \item \textbf{Analisis:} perbandingan demografi LGA atas/berkinerja rendah, korelasi Pearson usia median vs.\ pendapatan, okupansi per tipe properti, distribusi host, \textit{coverage} angsuran hipotek.
+\end{cellitems} \\
+\hline
+
+% ---------------- HASIL ----------------
+\textbf{Hasil Penelitian} &
+\begin{cellitems}
+  \item Micro-batch Structured Streaming pada Delta Lake mempertahankan throughput \textbf{18--62 MB/s} per \textit{active task}, latensi p99 \textbf{9--47 detik}, dan biaya satuan \textbf{1,8--6,4 USD per TB}.
+  \item Biaya per TB turun 3--4 kali dari tier small ke large pada ketiga jalur ingest (efek amortisasi \textit{cluster overhead}).
+  \item Profil latensi berbeda per jalur: Kafka terendah (9--12 dtk), Debezium CDC menengah (13--19 dtk), Auto Loader tertinggi (24--47 dtk, didominasi interval kedatangan file).
+  \item Kombinasi \textit{expectations} deklaratif + rekonsiliasi agregat menangkap \textbf{92--97\%} cacat hulu sebelum sampai ke konsumen; perubahan skema aditif lolos otomatis, perubahan struktural butuh intervensi.
+  \item Pendorong biaya utama adalah \textit{cluster utilization}, bukan tipe instance -- konsisten dengan penelitian biaya komputasi elastis terdahulu.
+\end{cellitems} &
+\begin{cellitems}
+  \item Medallion menawarkan \textit{progressive refinement}: Bronze mempertahankan data mentah + metadata asal-usul, Silver melakukan pembersihan, deduplikasi, imputasi nilai hilang, dan validasi aturan bisnis, Gold menghasilkan dataset siap analitik (model dimensional, agregat prahitung, \textit{data mart}).
+  \item Keunggulan dibanding data warehouse: fleksibilitas lebih besar dan kemampuan evolusi skema; keunggulan dibanding data lake: organisasi serta penjaminan kualitas yang lebih terstruktur.
+  \item Manfaat: pemisahan tanggung jawab (\textit{separation of concerns}), penskalaan tiap lapisan secara independen, \textit{lineage} \& audit, serta pemrosesan inkremental yang hemat sumber daya.
+  \item Tantangan: latensi akhir-ke-akhir bertambah karena tahapan berlapis, duplikasi data antar lapisan yang menaikkan biaya penyimpanan, dan kompleksitas menjaga konsistensi antar salinan data.
+\end{cellitems} &
+\begin{cellitems}
+  \item Pipeline ELT ujung-ke-ujung berhasil dibangun: seluruh CSV mentah masuk ke skema Bronze PostgreSQL, bertransformasi ke Silver (staging + snapshot) dan Gold, serta meningkatkan skalabilitas, otomasi, kualitas data, dan ketertelusuran.
+  \item LGA berkinerja tertinggi (Northern Beaches, Woollahra, Waverley) bertekstur demografi lebih makmur: usia median lebih tua, rumah tangga lebih kecil, sewa lebih tinggi.
+  \item Korelasi Pearson antara usia median dan pendapatan estimasi Airbnb hanya \textbf{0,167} (hubungan lemah positif).
+  \item \textit{Private room} di apartemen memberi okupansi penuh 30 hari dengan pendapatan rata-rata tertinggi (AUD 127.500), mengungguli seluruh rumah/townhouse.
+  \item \textbf{99,47\%} host hanya beroperasi di satu LGA; \textit{coverage} hipotek tertinggi di Northern Beaches (72,45\%).
+\end{cellitems} \\
+\hline
+
+% ---------------- KELEBIHAN ----------------
+\textbf{Kelebihan} &
+\begin{cellitems}
+  \item Mengisi celah literatur dengan bukti empiris terkuantifikasi (throughput, latensi, biaya) yang jarang tersedia peer-review.
+  \item Protokol pengukuran ketat dan terdokumentasi: konfigurasi dikunci, \textit{warm-up exclusion}, jendela steady-state, dua jendela non-tumpang-tindih + median.
+  \item Cakupan luas (3 jalur ingest $\times$ 3 tier skala) dengan ancaman validitas internal/eksternal dibahas eksplisit.
+  \item Menyertakan pernyataan reproducibility dan ketersediaan data.
+\end{cellitems} &
+\begin{cellitems}
+  \item Penjelasan tiap lapisan (Bronze--Silver--Gold) sistematis dan mudah diikuti pemula.
+  \item Memuat analisis komparatif terhadap data warehouse, data lake, dan mikrolayanan, plus tabel strategi implementasi (pemilihan teknologi, pemrosesan inkremental, partisi, version control).
+  \item Bahasa ringan dan kerangka konsep yang jelas sebagai pengantar arsitektur medallion.
+\end{cellitems} &
+\begin{cellitems}
+  \item Implementasi nyata ujung-ke-ujung dengan data aktual (Airbnb + sensus ABS), bukan sekadar rancang bangun teoretis.
+  \item Ketertelusuran kuat: metadata \texttt{source\_file}/\texttt{load\_timestamp}, logging lineage, snapshot dbt SCD Type 2 untuk analisis \textit{point-in-time}.
+  \item Memenuhi celah riset dan menghasilkan wawasan bisnis ad-hoc yang konkret (profitabilitas regional, perilaku host, keberlanjutan finansial).
+  \item Konteks institusional jelas (dua penulis, dua universitas), keterbatasan infrastruktur diakui terbuka.
+\end{cellitems} \\
+\hline
+
+% ---------------- KEKURANGAN ----------------
+\textbf{Kekurangan} &
+\begin{cellitems}
+  \item Telemetri produksi tidak dirilis dengan alasan kerahasiaan sehingga hasil sulit direproduksi persis.
+  \item Hanya satu penyedia cloud, satu format tabel (Delta), satu ukuran \textit{cluster}/warehouse, sehingga angka absolut tidak dapat digeneralisasi.
+  \item Identitas \textit{deployment} dirahasiakan sehingga tidak ada rincian per-deployment (hanya rerata/median kohort).
+  \item Karya tunggal oleh peneliti independen tanpa tinjauan sejawat prosedural yang dijelaskan.
+\end{cellitems} &
+\begin{cellitems}
+  \item Murni kajian konseptual: tidak ada validasi empiris, benchmark, maupun studi kasus implementasi nyata (tidak ada angka throughput/latensi/biaya).
+  \item Sebagian rujukan bukan publikasi peer-reviewed (ResearchGate, IJFMR, blog vendor) sehingga kekuatan bukti lemah.
+  \item Relevansi sebagian kutipan dipertanyakan (mis.\ model \textit{deep neural network} yang digunakan untuk menjustifikasi \textit{lineage} dan \textit{domain separation}).
+  \item Tidak membahas aspek biaya, keamanan, maupun operasional harian; peneliti tunggal.
+\end{cellitems} &
+\begin{cellitems}
+  \item Studi kasus tunggal (hanya Sydney) dan data sensus 2016, sehingga generalisasi terbatas.
+  \item Tidak ada pengukuran kinerja pipeline (throughput, latensi, biaya, skala data) sehingga klaim ``scalable'' tidak dibuktikan secara kuantitatif.
+  \item \textit{Monthly append} dijalankan manual via konfigurasi JSON -- otomasi masih parsial.
+  \item Keterbatasan infrastruktur (kapasitas penyimpanan, \textit{runtime} transformasi panjang).
+  \item Kegagalan editorial: caption tabel tertukar (Tabel 2 berjudul ``Correlation...'' tetapi berisi tipe properti; Tabel 3 dan 4 juga tertukar) dan subbab 4.6.2/4.6.4/4.6.5 memakai judul identik.
+  \item Penyuntingan bahasa dibantu AI (dinyatakan pada pengakuan penulis).
+\end{cellitems} \\
+\hline
+
+% ---------------- LINK ----------------
+\textbf{Link artikel yang dapat diakses} &
+\url{https://ijaibdcms.org/index.php/ijaibdcms/article/view/579} &
+\url{https://www.jisem-journal.com/index.php/journal/article/view/13557} &
+\url{https://international.arteii.or.id/index.php/IJIES/article/view/353} \\
+\hline
+
+\end{longtable}
+
+\end{document}

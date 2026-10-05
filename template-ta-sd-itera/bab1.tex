@@ -1,0 +1,24 @@
+%---------------------------------------------------------------
+% Driver khusus DRAF BAB 1
+% Menghasilkan bab1.pdf yang berisi BAB 1 PENDAHULUAN saja
+% (tanpa halaman pembuka, tanpa daftar pustaka)
+% Compile: latexmk -pdf bab1.tex
+%---------------------------------------------------------------
+\documentclass{gaya}
+
+% import berbagai variabel (judul, nama, pembimbing, dsb.)
+\input{pustaka/variables.tex}
+\input{pustaka/jenis-dokumen.tex}
+
+% pemenggalan kata
+\input{pustaka/tanda-hubung.tex}
+
+\begin{document}
+
+% Nomor halaman isi dimulai dari sini
+\pagenumbering{arabic}
+
+% Bab 1 pendahuluan
+\include{bab/1-pendahuluan.tex}
+
+\end{document}

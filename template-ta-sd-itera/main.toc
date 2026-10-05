@@ -1,0 +1,59 @@
+\babel@toc {bahasa}{}\relax 
+\babel@toc {bahasa}{}\relax 
+\babel@toc {bahasa}{}\relax 
+\contentsline {chapter}{HALAMAN JUDUL}{i}{Doc-Start}%
+\contentsline {chapter}{HALAMAN PENGESAHAN}{ii}{chapter*.1}%
+\contentsline {chapter}{HALAMAN PERNYATAAN ORISINALITAS}{iii}{chapter*.2}%
+\contentsline {chapter}{HALAMAN PERNYATAAN PERSETUJUAN PUBLIKASI}{iv}{chapter*.3}%
+\contentsline {chapter}{ABSTRAK}{v}{chapter*.4}%
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\emph {ABSTRACT}}{vi}{chapter*.5}%
+\babel@toc {bahasa}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {bahasa}{}\relax 
+\contentsline {chapter}{MOTTO}{vii}{chapter*.6}%
+\contentsline {chapter}{HALAMAN PERSEMBAHAN}{viii}{chapter*.7}%
+\contentsline {chapter}{KATA PENGANTAR}{ix}{chapter*.8}%
+\contentsline {chapter}{DAFTAR ISI}{x}{Item.14}%
+\contentsline {chapter}{DAFTAR GAMBAR}{x}{section*.16}%
+\contentsline {chapter}{DAFTAR TABEL}{xi}{section*.18}%
+\contentsline {chapter}{\numberline {I}PENDAHULUAN}{1}{chapter.20}%
+\contentsline {section}{\numberline {1.1}Latar Belakang}{1}{section.21}%
+\contentsline {section}{\numberline {1.2}Rumusan Masalah}{1}{section.22}%
+\contentsline {section}{\numberline {1.3}Tujuan Penelitian}{1}{section.25}%
+\contentsline {section}{\numberline {1.4}Batasan Masalah}{2}{section.28}%
+\contentsline {chapter}{\numberline {II}TINJAUAN PUSTAKA}{3}{chapter.29}%
+\contentsline {section}{\numberline {2.1}Menulis Subbab dan Indentasi Paragraf}{3}{section.30}%
+\contentsline {subsection}{\numberline {2.1.1}Menulis Subsubbab}{3}{subsection.31}%
+\contentsline {subsubsection}{\numberline {2.1.1.1}Menulis Subsubsubbab}{5}{subsubsection.38}%
+\contentsline {subsubsection}{\numberline {2.1.1.2}Contoh subsubsubbab lainnya}{5}{subsubsection.39}%
+\contentsline {section}{\numberline {2.2}Menulis Persamaan}{5}{section.40}%
+\contentsline {subsection}{\numberline {2.2.1}Persamaan inline}{6}{subsection.43}%
+\contentsline {chapter}{\numberline {III}METODE PENELITIAN}{7}{chapter.44}%
+\contentsline {section}{\numberline {3.1}Isi Metode Penelitian}{7}{section.45}%
+\contentsline {section}{\numberline {3.2}Data}{7}{section.46}%
+\contentsline {section}{\numberline {3.3}Alat dan Bahan}{7}{section.47}%
+\contentsline {subsection}{\numberline {3.3.1}Perangkat Keras}{7}{subsection.48}%
+\contentsline {subsection}{\numberline {3.3.2}Perangkat Lunak}{7}{subsection.49}%
+\contentsline {section}{\numberline {3.4}Alur Penelitian}{8}{section.52}%
+\contentsline {section}{\numberline {3.5}Tahapan Pelaksanaan}{8}{section.53}%
+\contentsline {section}{\numberline {3.6}Jadwal Kegiatan}{8}{section.54}%
+\contentsline {section}{\numberline {3.7}Melampirkan Gambar}{8}{section.56}%
+\contentsline {section}{\numberline {3.8}Program}{9}{section.58}%
+\contentsline {chapter}{\numberline {IV}HASIL DAN PEMBAHASAN}{10}{chapter.89}%
+\contentsline {section}{\numberline {4.1}Isi Bab Hasil dan Pembahasan}{10}{section.90}%
+\contentsline {section}{\numberline {4.2}Melampirkan Tabel}{10}{section.91}%
+\contentsline {subsection}{\numberline {4.2.1}Subsubbab 2 2}{14}{subsection.93}%
+\contentsline {section}{\numberline {4.3}Subab 3}{14}{section.94}%
+\contentsline {chapter}{\numberline {V}KESIMPULAN DAN SARAN}{16}{chapter.97}%
+\contentsline {section}{\numberline {5.1}Kesimpulan}{16}{section.98}%
+\contentsline {section}{\numberline {5.2}Saran}{16}{section.103}%
+\contentsline {chapter}{DAFTAR PUSTAKA}{17}{section*.108}%
+\contentsline {chapter}{LAMPIRAN}{17}{section*.109}%
+\contentsline {chapter}{\numberline {A}Rencana Pengamatan}{18}{chapter.111}%
+\contentsline {chapter}{\numberline {B}Hasil Pengamatan}{19}{chapter.112}%
+\contentsline {section}{\numberline {{B}.1}\textit {Logbook} Pengamatan}{19}{section.113}%
+\contentsline {section}{\numberline {{B}.2}Objek pada Citra Pengamatan}{19}{section.114}%
+\contentsline {section}{\numberline {{B}.3}Dokumentasi Pengamatan}{19}{section.115}%
+\contentsline {chapter}{\numberline {C}Program}{20}{chapter.117}%
+\contentsline {chapter}{\numberline {D}Grafik Tambahan}{21}{chapter.149}%

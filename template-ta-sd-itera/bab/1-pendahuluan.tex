@@ -1,0 +1,89 @@
+\chapter{PENDAHULUAN}
+\section{Latar Belakang}
+\label{section:latarbelakang}
+Akses terhadap air bersih dan sanitasi yang layak merupakan salah satu tujuan keberlanjutan global yang dirumuskan dalam Sustainable Development Goals (SDG) 6. Kualitas air permukaan, khususnya air sungai, menjadi indikator sentral karena berkaitan langsung dengan kesehatan masyarakat, kelangsungan ekosistem perairan, serta keberlanjutan pembangunan wilayah. Pemantauan kualitas air permukaan oleh karenanya bukan sekadar aktivitas pengukuran, melainkan fondasi bagi pengambilan keputusan pengelolaan sumber daya air yang berbasis bukti.
+
+Tekanan urbanisasi menjadi salah satu pendorong utama degradasi kualitas air di banyak wilayah. Urbanisasi yang masif mengubah tata guna lahan, memperbesar volume limbah domestik dan industri, serta meningkatkan beban pencemaran yang diterima badan air. Studi kasus di Liangjiang New Area, China, misalnya, menunjukkan bahwa urbanisasi yang cepat berbanding lurus dengan penurunan kualitas air sungai dan perubahan komunitas makroinvertebrata sebagai bioindikator \cite{luo_impacts_2018}. Pola serupa dicatat pada sejumlah kawasan padat penduduk lainnya, sehingga kepadatan populasi layak dipertimbangkan sebagai variabel penjelas yang menjelaskan tekanan urbanisasi terhadap kualitas air.
+
+Di sisi lain, ketersediaan data pemantauan kualitas air justru mengalami peningkatan yang tajam. Karim dkk. \cite{karim_comprehensive_2025} memublikasikan dataset kualitas air permukaan berskala masif yang terdiri dari 2,82 juta rekaman sepanjang 1940--2023, mencakup delapan parameter fisikokimia utama dari lima negara, salah satunya England. Dataset tersebut membuka peluang analisis berbasis \textit{machine learning} berskala besar yang sebelumnya sulit dilakukan, sekaligus menempatkan England sebagai sumber data terbesar yang relevan untuk dikaji secara mendalam. Akan tetapi, besarnya volume data yang disertai dimensi spasial membuat pemrosesan sekuensial pada satu mesin menjadi tidak efisien. Pemrosesan terdistribusi dengan Apache Spark \cite{zaharia_apache_2016} menawarkan alternatif yang lebih layak, sebagaimana telah dibuktikan oleh Sun dan Fan \cite{sun_combined_2022} yang membangun model prediksi pencemaran air di atas platform Spark. Studi tersebut hanya memanfaatkan parameter fisikokimia dengan akurasi sekitar 74--79\%, sehingga mengindikasikan adanya celah penelitian: integrasi faktor spasial terkait urbanisasi ke dalam pipeline prediksi kualitas air secara end-to-end masih jarang dilakukan.
+
+Untuk mengisi celah tersebut, penelitian ini memanfaatkan data kepadatan populasi dari WorldPop \cite{worldpop_uk_density} sebagai proksi tekanan urbanisasi, yang digabungkan dengan data fisikokimia melalui \textit{spatial join}. Pengolahan data dirancang dengan Medallion Architecture yang membagi pipeline menjadi tiga lapisan: \textit{Bronze} untuk ingesti data mentah, \textit{Silver} untuk pembersihan dan integrasi data, serta \textit{Gold} untuk pembentukan \textit{feature table} siap pakai \textit{machine learning}. Setiap rekaman pada lapisan \textit{Gold} kemudian diberi label Water Quality Index (WQI) kelas I--V berdasarkan metodologi standar CCME \cite{ccme_canadian_2007}, sehingga prediksi kualitas air dapat diformulasikan sebagai masalah klasifikasi yang terukur.
+
+Secara ringkas, keseluruhan tahapan penelitian yang akan dilakukan---mulai dari ingesti data mentah, pembersihan dan integrasi lintas dataset, pembentukan fitur, pelatihan model, hingga evaluasi serta visualisasi hasil---dirangkum pada Gambar \ref{fig:alurpenelitian}.
+
+\section{Alur Penelitian}
+Berdasarkan latar belakang yang telah diuraikan, penelitian ini dirancang mengikuti alur kerja pipeline data terstruktur seperti ditampilkan pada Gambar \ref{fig:alurpenelitian}.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        font=\footnotesize,
+        node distance=0.5cm,
+        src/.style={draw, rounded corners=2pt, align=center, fill=gray!10, text width=5.6cm, inner sep=5pt},
+        lay/.style={draw, rounded corners=2pt, align=center, text width=10.8cm, inner sep=5pt},
+        res/.style={draw, rounded corners=2pt, align=center, fill=teal!12, text width=4.9cm, inner sep=5pt},
+        arrow/.style={-{Stealth}, semithick}
+    ]
+        \node[src] (dq) {Sumber data kualitas air\\(CSV Figshare, 2,82 juta rekaman, 1940--2023)};
+        \node[src, right=0.6cm of dq] (wp) {Sumber data pendukung\\(GeoTIFF WorldPop: kepadatan populasi)};
+
+        \path (dq.south) -- (wp.south) node[midway, below=0.55cm, lay, fill=brown!25] (bronze)
+            {\textbf{Bronze Layer -- Raw Ingestion}\\Penyimpanan data mentah ke MinIO/HDFS; penjadwalan ingesti oleh Apache Airflow};
+
+        \node[lay, fill=gray!25, below=of bronze] (silver)
+            {\textbf{Silver Layer -- Cleaning \& Integration}\\Pembersihan data (Spark SQL/PySpark), konversi GeoTIFF$\rightarrow$CSV (rasterio/GDAL), \textit{spatial join} data kualitas air--kepadatan populasi};
+
+        \node[lay, fill=yellow!35, below=of silver] (gold)
+            {\textbf{Gold Layer -- Feature Engineering}\\Feature table 8 parameter fisikokimia + \texttt{pop\_density}, pelabelan WQI (CCME) kelas I--V, penyimpanan Parquet/Delta Lake};
+
+        \node[lay, fill=blue!15, below=of gold] (ml)
+            {\textbf{Pemodelan \& Monitoring ML}\\Pelatihan Random Forest \& XGBoost, pelacakan eksperimen MLflow, evaluasi RMSE dan Akurasi};
+
+        \node[res, below=0.55cm of ml, xshift=-2.75cm] (eval)
+            {\textbf{Evaluasi Model}\\RMSE $\leq$ 0,35; Akurasi $\geq$ 85\% (\textit{held-out} 80/20)};
+        \node[res, below=0.55cm of ml, xshift=2.75cm] (dash)
+            {\textbf{Dashboard Interaktif}\\Visualisasi korelasi urbanisasi--kualitas air (Apache Superset)};
+
+        \draw[arrow] (dq.south) -- ([xshift=-1.5cm]bronze.north);
+        \draw[arrow] (wp.south) -- ([xshift=1.5cm]bronze.north);
+        \draw[arrow] (bronze) -- (silver);
+        \draw[arrow] (silver) -- (gold);
+        \draw[arrow] (gold) -- (ml);
+        \draw[arrow] ([xshift=-2.75cm]ml.south) -- (eval.north);
+        \draw[arrow] ([xshift=2.75cm]ml.south) -- (dash.north);
+    \end{tikzpicture}
+    \caption{Alur penelitian: pipeline Medallion Architecture end-to-end dari ingesti data hingga evaluasi model prediksi WQI}
+    \label{fig:alurpenelitian}
+\end{figure}
+
+\section{Rumusan Masalah}
+Berdasarkan latar belakang yang telah dijelaskan sebelumnya, rumusan masalah pada penelitian tugas besar ini adalah sebagai berikut:
+\begin{enumerate}
+    \item Apakah Medallion Architecture berbasis Apache Spark mampu memproses dataset kualitas air permukaan berskala jutaan rekaman secara efisien?
+    \item Sejauh mana integrasi parameter tekanan urbanisasi (\texttt{pop\_density}) dapat meningkatkan akurasi prediksi Water Quality Index (WQI) dibandingkan model yang hanya menggunakan parameter fisikokimia?
+    \item Apakah pipeline yang dibangun untuk data England dapat diadaptasi dengan perubahan minimal untuk dataset kualitas air Indonesia?
+\end{enumerate}
+
+\section{Tujuan Penelitian}
+Tujuan penelitian ini berdasarkan rumusan masalah tersebut di atas adalah sebagai berikut:
+\begin{enumerate}
+    \item Membangun pipeline data end-to-end berbasis Medallion Architecture (Bronze, Silver, dan Gold) dengan Apache Spark yang mampu mengolah 2,82 juta rekaman kualitas air England secara terdistribusi dan terukur.
+    \item Melatih serta mengevaluasi model Random Forest dan XGBoost untuk memprediksi kelas WQI, termasuk mengukur kontribusi fitur kepadatan populasi terhadap peningkatan akurasi melalui studi ablation, dengan target RMSE $\leq$ 0,35 dan akurasi $\geq$ 85\%.
+    \item Menyediakan dashboard visualisasi interaktif melalui Apache Superset beserta dokumentasi eksperimen di MLflow, sehingga pipeline yang dibangun siap diadaptasi untuk pemantauan kualitas air di Indonesia sebagai kontribusi terhadap SDG 6.
+\end{enumerate}
+
+\section{Batasan Masalah}
+Agar arah penelitian tetap fokus dan hasilnya dapat dievaluasi secara jelas, penelitian ini dibatasi pada hal-hal berikut:
+\begin{enumerate}
+    \item Data yang digunakan hanya kualitas air wilayah England periode 1940--2023 dari dataset Figshare serta data kepadatan populasi WorldPop, tanpa mengambil data dari wilayah lain.
+    \item Fitur yang digunakan dibatasi pada delapan parameter fisikokimia (DO, CODMn, NH3-N, TP, TN, pH, \textit{turbidity}, dan \textit{conductivity}) serta \texttt{pop\_density}, dengan label WQI kelas I--V berdasarkan standar CCME.
+    \item Pemodelan dibatasi pada algoritma Random Forest dan XGBoost; perbandingan dilakukan terhadap baseline pipeline sekuensial (Pandas) dan model tanpa fitur \texttt{pop\_density}, bukan terhadap seluruh algoritma \textit{machine learning} yang ada.
+    \item Infrastruktur dijalankan secara lokal dengan Docker Compose (Apache Spark, MinIO/HDFS, Apache Airflow, MLflow, dan Apache Superset) dalam mode pemrosesan \textit{batch}, sehingga aspek \textit{real-time streaming} dan penerapan produksi berskala layanan tidak dibahas.
+    \item Penelitian ini tidak membahas aspek kebijakan pengelolaan air secara normatif, maupun validasi model pada konteks fisikokimia Indonesia, yang menjadi pekerjaan lanjutan.
+\end{enumerate}
+
+\section{Manfaat Penelitian}
+Penelitian ini diharapkan memberikan manfaat berikut. \textbf{Secara teoretis}, penelitian ini menguji pemanfaatan fitur tekanan urbanisasi dalam prediksi kualitas air berbasis data besar, sehingga menambah bukti empiris tentang peran kepadatan populasi sebagai penjelas degradasi kualitas air. \textbf{Secara praktis}, penelitian ini menghasilkan pipeline Medallion Architecture yang tereproduksi beserta model prediksi WQI dan dashboard visualisasi yang dapat digunakan sebagai basis sistem pemantauan kualitas air. \textbf{Secara jangka panjang}, arsitektur dan konfigurasi yang dibangun diharapkan dapat diadaptasi dengan perubahan minimal untuk mendukung pemantauan kualitas air di Indonesia dalam rangka pencapaian SDG 6.
+
+\section{Sistematika Penulisan}
+Untuk memberikan gambaran menyeluruh, laporan penelitian ini disusun dalam lima bab. Bab I Pendahuluan memuat latar belakang, rumusan masalah, tujuan penelitian, batasan masalah, manfaat penelitian, serta alur penelitian. Bab II Tinjauan Pustaka membahas landasan teori yang mendasari Medallion Architecture, pemrosesan data terdistribusi, serta perhitungan Water Quality Index. Bab III Metodologi Penelitian menjelaskan desain pipeline, dataset, infrastruktur, serta rencana eksperimen dan evaluasi. Bab IV Hasil dan Pembahasan menyajikan hasil implementasi pipeline, performa model, serta pembahasan terhadap rumusan masalah. Bab V Penutup berisi kesimpulan dan saran tindak lanjut.
