@@ -1,0 +1,29 @@
+%---------------------------------------------------------------
+% Driver DRAF BAB 1 + DAFTAR PUSTAKA
+% Menghasilkan bab1-pustaka.pdf yang berisi BAB 1 PENDAHULUAN
+% dan Daftar Pustaka (sitasi yang dipakai di Bab 1 saja)
+% Compile: latexmk -pdf bab1-pustaka.tex
+%---------------------------------------------------------------
+\documentclass{gaya}
+
+% import berbagai variabel (judul, nama, pembimbing, dsb.)
+\input{pustaka/variables.tex}
+\input{pustaka/jenis-dokumen.tex}
+
+% pemenggalan kata
+\input{pustaka/tanda-hubung.tex}
+
+\begin{document}
+
+% Nomor halaman isi dimulai dari sini
+\pagenumbering{arabic}
+
+% Bab 1 pendahuluan
+\include{bab/1-pendahuluan.tex}
+
+% Daftar pustaka
+\phantomsection
+\sloppy
+\printbibliography
+
+\end{document}
