@@ -1,67 +1,71 @@
 \chapter{TINJAUAN PUSTAKA}
-% contoh opsi lain Bab 2
-%\chapter{DASAR TEORI}
 
+\section{Penelitian Terdahulu}
 
-\section{Menulis Subbab dan Indentasi Paragraf}
-Tulis subbab yang sesuai dengan penelitian yang dilakukan. Jumlah Subbab disesuaikan dengan penelitian sehingga cerita yang dibangun dan analisis yang ditulis lebih mudah untuk dipahami. Tulis referensi yang selengkap-lengkapnya dan menggambarkan perkembangan penelitian terkait.
+Penelitian mutakhir menunjukkan pergeseran kajian kualitas air dari analisis pada satu lokasi menuju pengolahan data lintas ruang dan waktu. Karim dkk. \cite{karim_comprehensive_2025} menghimpun 2,82 juta rekaman dari lima negara dan menyeragamkan delapan parameter fisikokimia untuk mendukung analisis empiris serta pembelajaran mesin. Pada skala yang lebih terbatas, Wong dkk. \cite{wong_water_2022} memperlihatkan bahwa parameter yang tidak digunakan dalam rumus WQI konvensional, seperti konduktivitas, kekeruhan, ion, logam, dan indikator mikrobiologis, tetap dapat membawa informasi untuk klasifikasi kualitas air. Campos dkk. \cite{campos_automated_2026} bahkan memperoleh kinerja prediksi yang kompetitif hanya dengan empat parameter yang mudah diukur. Secara bersama, temuan tersebut menegaskan bahwa ketersediaan data yang besar perlu diikuti pemilihan fitur dan prosedur harmonisasi yang jelas; banyaknya parameter tidak dengan sendirinya menjamin model yang lebih berguna.
 
-Pro omnium incorrupte ea. Elitr eirmod ei qui, ex partem causae disputationi nec. Amet dicant no vis, eum modo omnes quaeque ad, antiopam evertitur reprehendunt pro ut. Nulla inermis est ne. Choro insolens mel ne, eos labitur nusquam eu, nec deserunt reformidans ut. His etiam copiosae principes te, sit brute atqui definiebas id \cite{mumpuni_future_2018}. Elitr eirmod ei qui, ex partem causae disputationi nec. Amet dicant no vis, eum modo omnes quaeque ad, antiopam evertitur reprehendunt pro ut. Nulla inermis est ne. Choro insolens mel ne, eos labitur nusquam eu, nec deserunt reformidans ut. His etiam copiosae principes te, sit brute atqui definiebas id.
+Kelompok penelitian lain menempatkan kondisi wilayah sebagai penjelas perubahan kualitas air. Zheng dkk. \cite{zheng_large_2023} menemukan bahwa penambahan variabel penggunaan lahan dan sosial ekonomi meningkatkan prediksi beberapa parameter pada 138 sub-DAS, serta menunjukkan bahwa kepadatan penduduk dan proporsi kawasan perkotaan penting untuk parameter tertentu. Li dkk. \cite{li_urbanization_2023} melaporkan kesesuaian spasial antara pengelompokan lanskap perkotaan atau pertanian dan degradasi kualitas sungai di China. Dalam konteks Indonesia, Rohmadi dkk. \cite{rohmadi_impact_2022} menemukan korelasi positif kepadatan penduduk dengan total coliform dan fecal coliform di sungai-sungai Kota Yogyakarta. Hasil-hasil tersebut mendukung pemakaian kepadatan penduduk sebagai fitur kontekstual, tetapi sifat observasional dan perbedaan skala analisis tidak membenarkan penafsiran bahwa kepadatan penduduk merupakan penyebab langsung pencemaran.
 
-Sit et labitur albucius elaboraret. Ceteros efficiantur mei ad. Hendrerit vulputate democritum est at, quem veniam ne has, mea te malis ignota volumus. Eros reprimique vim no. Alii legendos volutpat in sed, sit enim nemore labores no. No odio decore causae has. Vim te falli libris neglegentur, eam in tempor delectus dignissim, nam hinc dictas an. Sit et labitur albucius elaboraret. Ceteros efficiantur mei ad. Hendrerit vulputate democritum est at, quem veniam ne has, mea te malis ignota volumus. Eros reprimique vim no. Alii legendos volutpat in sed, sit enim nemore labores no. No odio decore causae has. Vim te falli libris neglegentur, eam in tempor delectus dignissim, nam hinc dictas an.
+Pada sisi pemodelan, hasil antarpenelitian tidak menunjuk satu algoritma yang selalu unggul. Uddin dkk. \cite{uddin_performance_2023} memperoleh hasil sangat tinggi dari KNN dan XGBoost untuk klasifikasi beberapa formulasi WQI pada data Cork Harbour, sedangkan Wong dkk. \cite{wong_water_2022} memilih Random Forest karena mampu menangkap hubungan nonlinear dan memperbaiki kinerja kelas minoritas setelah SMOTE. Liu dkk. \cite{liu_wqi_2024} mendapatkan AUC XGBoost sebesar 0,91 dan akurasi 98\% setelah memilih lima indikator air tanah, sementara Hussein dkk. \cite{hussein_machine_2023} justru menemukan SVM linear sebagai model terbaik pada 80 sampel air tanah. Perbedaan data, definisi kelas, ketidakseimbangan kelas, dan cara membagi data menjelaskan mengapa perbandingan algoritma harus dilakukan pada partisi serta metrik yang sama. Nilai akurasi yang sangat tinggi juga perlu dibaca hati-hati apabila label WQI dihitung secara deterministik dari prediktor pada baris yang sama, sebab model dapat sekadar mempelajari ulang aturan pembentukan label.
 
-\subsection{Menulis Subsubbab}
-Tulis Subsub bab jika diperlukan, dan harus lebih dari satu. Jika hanya satu bahasan maka tidak perlu dijadikan subsubbab. Begitu juga ketika menulis item, tidak perlu dijadikan item jika isinya hanya satu item.
-\begin{enumerate}
-    \item Ne per tota mollis suscipit. Ullum labitur vim ut, ea dicit eleifend dissentias sit. Duis praesent expetenda ne sed.
-    \item Sit et labitur albucius elaboraret. Ceteros efficiantur mei ad.
-    \item Hendrerit vulputate democritum est at, quem veniam ne has, mea te malis ignota volumus.
-\end{enumerate}
+Kebutuhan komputasi mulai dibahas bersama akurasi model. Sun dan Fan \cite{sun_combined_2022} memparalelkan Cascade SVM dengan Spark setelah dekomposisi EEMD dan melaporkan peningkatan efisiensi pelatihan serta akurasi prediksi untuk DO, amonia nitrogen, dan fosfor. Meskipun demikian, eksperimen itu hanya menggunakan 458 sampel runtun waktu dan tidak membandingkan alur Spark dengan pemrosesan sekuensial pada pekerjaan pembersihan, integrasi spasial, dan pembentukan fitur. Studi-studi WQI lainnya lebih berpusat pada skor prediksi daripada ketertelusuran transformasi dari data mentah hingga data siap model. Dengan demikian, kinerja model dan kinerja pipeline masih sering dinilai sebagai dua persoalan yang terpisah.
 
-Eros reprimique vim no. Alii legendos volutpat in sed, sit enim nemore labores no. No odio decore causae has. Vim te falli libris neglegentur, eam in tempor delectus dignissim, nam hinc dictas an. Ne per tota mollis suscipit. Ullum labitur vim ut, ea dicit eleifend dissentias sit. Duis praesent expetenda ne sed. Sit et labitur albucius elaboraret. Ceteros efficiantur mei ad. Hendrerit vulputate democritum est at, quem veniam ne has, mea te malis ignota volumus. Eros reprimique vim no. Alii legendos volutpat in sed, sit enim nemore labores no. No odio decore causae has. Vim te falli libris neglegentur, eam in tempor delectus dignissim, nam hinc dictas an.
+Berdasarkan sintesis tersebut, belum ditemukan penelitian yang secara terkontrol menggabungkan rekaman kualitas air England dengan kepadatan penduduk, mengelolanya melalui lapisan \textit{Bronze--Silver--Gold}, mengukur Spark terhadap Pandas berdasarkan waktu pemrosesan dan throughput, kemudian menguji kontribusi fitur kepadatan penduduk serta membandingkan Random Forest dengan XGBoost pada partisi yang sama. Karim dkk. \cite{karim_comprehensive_2025} menyediakan data berskala besar tetapi tidak menguji rancangan pipeline tersebut; Zheng dkk. \cite{zheng_large_2023} dan Rohmadi dkk. \cite{rohmadi_impact_2022} mendukung relevansi variabel kependudukan tanpa melakukan studi ablasi pada klasifikasi WQI; sedangkan Sun dan Fan \cite{sun_combined_2022} menggunakan Spark tanpa tolok ukur terhadap pipeline sekuensial. Celah ini menjadi dasar bagi penelitian yang memisahkan evaluasi rekayasa data, kontribusi fitur kontekstual, dan perbandingan algoritma agar kesimpulan masing-masing dapat ditelusuri.
 
-Terkadang item ditulis tanpa penomoran, hal ini dilakukan untuk menunjukkan sesuatu yang jumlahnya tidak diketahui secara pasti. Penulisan item yang tidak bernomor contohnya adalah sebagai berikut:
-\begin{itemize}
-    \item Pro omnium incorrupte ea. Elitr eirmod ei qui, ex partem causae disputationi nec. Amet dicant
-    \item No vis, eum modo omnes quaeque ad, antiopam evertitur reprehendunt pro ut.
-    \item Nulla inermis est ne. Choro insolens mel ne, eos labitur nusquam eu, nec deserunt reformidans ut. His etiam copiosae principes te, sit brute atqui definiebas id.
-\end{itemize}
+\section{Kualitas Air dan Parameter Fisikokimia}
 
-Terkadang item penomoran ingin diubah sesuai format tertentu. Contohnya adalah sebagai berikut:
-\begin{enumerate}[a).]
-    \item Pro omnium incorrupte ea. Elitr eirmod ei qui, ex partem causae disputationi nec. Amet dicant
-    \item No vis, eum modo omnes quaeque ad, antiopam evertitur reprehendunt pro ut.
-    \item Nulla inermis est ne. Choro insolens mel ne, eos labitur nusquam eu, nec deserunt reformidans ut. His etiam copiosae principes te, sit brute atqui definiebas id.
-\end{enumerate}
+Kualitas air menggambarkan kesesuaian kondisi fisik, kimia, dan biologis air terhadap fungsi tertentu. Dataset yang digunakan dalam penelitian ini memuat amonia, \textit{biochemical oxygen demand} lima hari (BOD$_5$), \textit{dissolved oxygen} (DO), ortofosfat, pH, suhu, nitrogen, dan nitrat \cite{karim_comprehensive_2025}. Parameter-parameter tersebut tidak memiliki arah interpretasi yang seragam. DO yang rendah dapat menunjukkan keterbatasan oksigen bagi biota, sedangkan BOD$_5$, nutrien, atau amonia yang tinggi dapat mencerminkan beban bahan organik dan pengayaan nutrien. Karena rentang nilai, unit, frekuensi pengukuran, dan kelengkapan setiap parameter dapat berbeda, standardisasi satuan dan pemeriksaan nilai hilang merupakan prasyarat sebelum indeks atau model dibentuk.
 
-Terkadang item penomoran ingin diubah sesuai format tertentu. Contohnya adalah sebagai berikut:
-\begin{itemize}
-    \item[!!] Pro omnium incorrupte ea. Elitr eirmod ei qui, ex partem causae disputationi nec. Amet dicant
-    \item[*] No vis, eum modo omnes quaeque ad, antiopam evertitur reprehendunt pro ut.
-    \item[Step 1.] Nulla inermis est ne. Choro insolens mel ne, eos labitur nusquam eu, nec deserunt reformidans ut. His etiam copiosae principes te, sit brute atqui definiebas id.
-\end{itemize}
+Data multinegara juga membawa heterogenitas yang berasal dari periode, lembaga, protokol pengukuran, dan lokasi. Karim dkk. \cite{karim_comprehensive_2025} mempertahankan pencilan pada dataset terbitannya agar pengguna dapat menentukan penanganan yang sesuai dengan sensitivitas analisis. Konsekuensinya, penyaringan wilayah England, pemeriksaan koordinat, validasi rentang, dan pencatatan aturan pembersihan harus dilakukan secara eksplisit. Rekaman yang tidak lengkap tidak boleh diisi atau dihapus tanpa melaporkan dampaknya terhadap jumlah unit analisis dan distribusi kelas.
 
+\section{Water Quality Index}
 
-\subsubsection{Menulis Subsubsubbab}
-Ne per tota mollis suscipit. Ullum labitur vim ut, ea dicit eleifend dissentias sit. Duis praesent expetenda ne sed. Sit et labitur albucius elaboraret. Ceteros efficiantur mei ad. Hendrerit vulputate democritum est at, quem veniam ne has, mea te malis ignota volumus. Eros reprimique vim no. Alii legendos volutpat in sed, sit enim nemore labores no. No odio decore causae has. Vim te falli libris neglegentur, eam in tempor delectus dignissim, nam hinc dictas an.
-
-\subsubsection{Contoh subsubsubbab lainnya}
-Pro omnium incorrupte ea. Elitr eirmod ei qui, ex partem causae disputationi nec. Amet dicant no vis, eum modo omnes quaeque ad, antiopam evertitur reprehendunt pro ut. Nulla inermis est ne. Choro insolens mel ne, eos labitur nusquam eu, nec deserunt reformidans ut. His etiam copiosae principes te, sit brute atqui definiebas id.
-
-
-
-\section{Menulis Persamaan}
-Persamaan matematis dapat ditulis dalam berbagai bentuk. Beberapa faktor yang mempengaruhi penulisan antara lain: (1) apakah persamaan tadi perlu diberi nomor atau tidak (2) apakah ada persamaan-persamaan tadi dalam sebuah kelompok (3) atau apakah merupakan bentuk penurunan yang perlu disejajarkan (4) selain itu bisa juga persamaan yang ditulis di dalam teks.
-\begin{equation}
-E=mc^2
-\end{equation}
-    dengan $E$ adalah energi, $m$ adalah massa, dan $c$ adalah kecepatan cahaya.
+\textit{Water Quality Index} (WQI) merangkum sejumlah parameter ke dalam nilai atau kelas yang lebih mudah dikomunikasikan. Penelitian ini mengacu pada CCME WQI karena kerangkanya dapat menggunakan kumpulan variabel dan nilai acuan yang disesuaikan dengan tujuan penilaian \cite{ccme_canadian_2007}. Indeks dibentuk oleh tiga komponen: cakupan variabel yang gagal memenuhi acuan ($F_1$), frekuensi pengujian yang gagal ($F_2$), dan amplitudo penyimpangan dari acuan ($F_3$). Bentuk umumnya ditunjukkan pada Persamaan \ref{eq:ccme-wqi}.
 
 \begin{equation}
-\sqrt{x^2+1}
+    \mathrm{CCME\ WQI}=100-\frac{\sqrt{F_1^2+F_2^2+F_3^2}}{1{,}732}
+    \label{eq:ccme-wqi}
 \end{equation}
-    dengan $x$ adalah variabel.
 
+Nilai WQI bergantung pada pilihan parameter, nilai acuan, periode agregasi, dan ketersediaan pengujian. Uddin dkk. \cite{uddin_performance_2023} menunjukkan bahwa formulasi dan skema klasifikasi yang berbeda dapat menghasilkan ketidakpastian kelas untuk kondisi air yang sama. Oleh karena itu, penelitian harus mendokumentasikan sumber nilai acuan, arah pelanggaran setiap parameter, unit analisis, serta aturan ketika jumlah pengujian tidak mencukupi. Apabila kelas WQI pada waktu yang sama dibentuk langsung dari variabel yang kemudian menjadi prediktor, keluaran model diposisikan sebagai otomasi klasifikasi, bukan prediksi masa depan.
 
-\subsection{Persamaan inline}
-Quo no atqui omnesque intellegat, ne nominavi argumentum quo. Eum ei purto oporteat dissentiet, soleat utamur an sit. Et assum dicam interpretaris quo. Cetero alterum ea vel, no possit alterum utroque nec. His fuisset quaestio ad. Has eu tritani incorrupte consequuntur, esse aliquip nec ne.
+\section{Kepadatan Penduduk sebagai Proksi Tekanan Urbanisasi}
+
+Urbanisasi memengaruhi lingkungan perairan melalui perubahan tutupan lahan, peningkatan permukaan kedap air, limpasan, serta beban limbah domestik dan industri. Kepadatan penduduk dapat mewakili intensitas aktivitas manusia di sekitar lokasi, tetapi tidak mengukur jenis, jalur, atau volume pencemar secara langsung. Zheng dkk. \cite{zheng_large_2023} memperlihatkan bahwa variabel sosial ekonomi dan penggunaan lahan dapat menambah informasi di luar variabel hidrometeorologi, sedangkan Li dkk. \cite{li_urbanization_2023} menunjukkan bahwa pengaruh lanskap perkotaan berkaitan dengan pola spasial dan berinteraksi dengan intensifikasi pertanian.
+
+Data WorldPop menyediakan raster estimasi kepadatan penduduk yang dapat dihubungkan dengan titik pemantauan berdasarkan koordinat \cite{worldpop_uk_density}. Nilai raster yang diekstrak pada atau di sekitar lokasi pengamatan digunakan sebagai fitur \texttt{pop\_density}. Ketepatan tahun raster, sistem referensi koordinat, resolusi, serta metode pengambilan nilai harus dicatat karena ketidakselarasan spasial dan temporal dapat menambah galat. Kontribusi fitur ini dinilai melalui studi ablasi, yaitu membandingkan model fisikokimia dengan model yang memperoleh tambahan \texttt{pop\_density}; hasilnya ditafsirkan sebagai perubahan informasi prediktif, bukan bukti hubungan sebab-akibat.
+
+\section{Medallion Architecture}
+
+\textit{Medallion Architecture} membagi pengolahan data menjadi lapisan yang menunjukkan tingkat kematangan data. Lapisan \textit{Bronze} mempertahankan data mentah beserta metadata sumbernya, lapisan \textit{Silver} menerapkan validasi, pembersihan, standardisasi, dan penggabungan, sedangkan lapisan \textit{Gold} menyediakan tabel yang disusun untuk analisis atau pemodelan \cite{databricks_medallion_2024}. Pemisahan ini memungkinkan kesalahan ditelusuri kembali ke keluaran tahap sebelumnya dan mencegah aturan analisis bercampur dengan proses ingesti.
+
+Dalam penelitian ini, data kualitas air dan raster kepadatan penduduk disimpan pada lapisan \textit{Bronze}. Penyaringan England, perbaikan tipe data, pemeriksaan nilai hilang, dan penggabungan spasial dilakukan pada lapisan \textit{Silver}. Lapisan \textit{Gold} berisi dua himpunan fitur yang sejajar, yaitu parameter fisikokimia dan parameter fisikokimia dengan \texttt{pop\_density}, disertai kelas WQI. Struktur tersebut mendukung reproduksibilitas studi ablasi karena kedua model berasal dari data dasar dan aturan pembagian yang sama.
+
+Arsitektur berlapis tidak dengan sendirinya membuat pemrosesan lebih cepat. Penambahan tahap dapat meningkatkan kebutuhan penyimpanan dan waktu masukan-keluaran, tetapi juga mengurangi pengulangan pembersihan serta menyediakan data antara yang dapat digunakan kembali. Karena itu, manfaat arsitektur dinilai melalui ketertelusuran keluaran dan pengukuran pipeline, bukan diasumsikan dari nama arsitekturnya.
+
+\section{Apache Spark dan Pandas}
+
+Apache Spark merupakan mesin komputasi yang memproses partisi data secara paralel dan menyediakan abstraksi untuk transformasi terdistribusi \cite{zaharia_apache_2016}. Sun dan Fan \cite{sun_combined_2022} menunjukkan bahwa Spark dapat digunakan untuk memparalelkan pelatihan model kualitas air. Namun, biaya penjadwalan, serialisasi, dan pertukaran data membuat Spark tidak selalu lebih cepat pada data kecil atau lingkungan satu mesin. Sebaliknya, Pandas menjalankan operasi tabular terutama dalam satu proses dan memiliki biaya awal yang lebih rendah, tetapi kapasitasnya dibatasi memori dan paralelisme lokal.
+
+Perbandingan yang adil mengharuskan kedua pipeline menerima masukan dan menghasilkan keluaran logis yang sama. Waktu pemrosesan ujung ke ujung dihitung dari awal pembacaan hingga keluaran \textit{Gold} selesai ditulis. Throughput dinyatakan sebagai jumlah baris keluaran yang diproses per detik. Pengulangan, pemanasan lingkungan, konfigurasi perangkat keras, versi perangkat lunak, ukuran data, dan status cache perlu dikendalikan agar perbedaan tidak keliru diatribusikan kepada kerangka pemrosesan.
+
+\section{Random Forest dan XGBoost}
+
+Random Forest membangun banyak pohon keputusan dari sampel \textit{bootstrap} dan subset fitur acak, kemudian menggabungkan suara pohon untuk menentukan kelas \cite{breiman_random_2001}. Pengacakan mengurangi korelasi antar-pohon dan membuat model relatif tahan terhadap hubungan nonlinear serta interaksi fitur. Wong dkk. \cite{wong_water_2022} menunjukkan kegunaan Random Forest untuk WQI dengan masukan alternatif, tetapi kinerja kelas minoritas tetap bergantung pada penanganan ketidakseimbangan data.
+
+XGBoost membangun pohon secara berurutan untuk memperbaiki galat model sebelumnya dan menggunakan regularisasi untuk mengendalikan kompleksitas \cite{chen_xgboost_2016}. Pada studi Uddin dkk. \cite{uddin_performance_2023} dan Liu dkk. \cite{liu_wqi_2024}, XGBoost menghasilkan kinerja klasifikasi yang tinggi. Keunggulan tersebut tidak dapat digeneralisasi tanpa pengujian pada data target karena hasil sensitif terhadap parameter, distribusi kelas, dan prosedur validasi.
+
+Perbandingan dalam penelitian ini menempatkan kedua algoritma pada himpunan fitur, partisi data, dan prosedur evaluasi yang sama. Penyetelan hiperparameter hanya dilakukan menggunakan data pelatihan agar data uji tetap menjadi penilaian akhir yang independen. Jika pengamatan dari lokasi atau waktu yang sama sangat berkorelasi, pembagian data perlu mempertimbangkan kelompok spasial atau urutan waktu untuk mengurangi kebocoran antarpartisi.
+
+\section{Evaluasi Kinerja}
+
+Evaluasi klasifikasi menggunakan akurasi dan F1-score makro. Akurasi adalah proporsi seluruh prediksi yang benar, sedangkan F1-score per kelas merupakan rata-rata harmonik presisi dan \textit{recall}. F1-score makro pada Persamaan \ref{eq:macro-f1} memberi bobot yang sama kepada setiap kelas sehingga lebih informatif ketika distribusi kelas WQI tidak seimbang.
+
+\begin{equation}
+    F1_{\mathrm{makro}}=\frac{1}{K}\sum_{k=1}^{K}
+    \frac{2\,\mathrm{presisi}_k\,\mathrm{recall}_k}
+    {\mathrm{presisi}_k+\mathrm{recall}_k}
+    \label{eq:macro-f1}
+\end{equation}
+
+Matriks konfusi digunakan untuk memeriksa kelas yang paling sering tertukar. Pengaruh kepadatan penduduk dilaporkan sebagai selisih metrik antara model dengan dan tanpa fitur tersebut, bukan hanya metrik model terbaik. Untuk pipeline, waktu pemrosesan dan throughput dilaporkan bersama jumlah pengulangan dan variasinya. Pemisahan metrik ini menjaga agar efisiensi rekayasa data, manfaat fitur, dan kemampuan algoritma tidak disatukan menjadi satu klaim kinerja.

@@ -1,0 +1,18 @@
+% Driver khusus BAB 2 dan daftar pustaka.
+% Kompilasi: latexmk -pdf -outdir=build bab2-pustaka.tex
+\documentclass{gaya}
+
+\input{pustaka/variables.tex}
+\input{pustaka/jenis-dokumen.tex}
+\input{pustaka/tanda-hubung.tex}
+
+\begin{document}
+\pagenumbering{arabic}
+\setcounter{chapter}{1}
+\include{bab/2-tinjauan-pustaka.tex}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+\sloppy
+\printbibliography
+\end{document}

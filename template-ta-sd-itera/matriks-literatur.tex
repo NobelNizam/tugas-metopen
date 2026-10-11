@@ -1,0 +1,85 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[indonesian]{babel}
+\usepackage[landscape,left=1cm,right=1cm,top=1.2cm,bottom=1.2cm]{geometry}
+\usepackage{array,longtable,ragged2e,times}
+\usepackage[table]{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{plain}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.17}
+\newcolumntype{P}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+
+\begin{document}
+
+\begin{center}
+    {\Large\bfseries Matriks Literatur Penelitian}\par
+    \vspace{2pt}
+    {\normalsize Prediksi Kualitas Air di England Berbasis Parameter Fisikokimia dan Tekanan Urbanisasi Menggunakan Medallion Architecture}\par
+    \vspace{2pt}
+    Nobel Nizam Fathirizki -- 123450117
+\end{center}
+
+\vspace{5pt}
+{\footnotesize Kriteria seleksi: artikel jurnal terbit 2022--2026 yang relevan dengan data kualitas air, WQI, tekanan urbanisasi, pembelajaran mesin, atau pemrosesan Spark. Keterbatasan memuat batas yang dinyatakan penulis dan/atau konsekuensi langsung dari rancangan studi.}
+
+\vspace{6pt}
+\scriptsize
+\begin{longtable}{|>{\centering\arraybackslash}p{0.55cm}|P{3.65cm}|P{3.55cm}|P{3.55cm}|P{4.10cm}|P{4.10cm}|P{4.10cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{No.} & \textbf{Penulis dan artikel} & \textbf{Masalah} & \textbf{Data} & \textbf{Metode} & \textbf{Hasil} & \textbf{Keterbatasan} \\
+\hline
+\endfirsthead
+
+\multicolumn{7}{l}{\bfseries Matriks Literatur -- lanjutan}\\[2pt]
+\hline
+\rowcolor{gray!20}
+\textbf{No.} & \textbf{Penulis dan artikel} & \textbf{Masalah} & \textbf{Data} & \textbf{Metode} & \textbf{Hasil} & \textbf{Keterbatasan} \\
+\hline
+\endhead
+
+\hline
+\multicolumn{7}{r}{\textit{Dilanjutkan pada halaman berikutnya}}\\
+\endfoot
+
+\hline
+\endlastfoot
+
+1 & Karim dkk. (2025), \textit{A Comprehensive Dataset of Surface Water Quality Spanning 1940--2023 for Empirical and ML Adopted Research}. Scientific Data. \href{https://doi.org/10.1038/s41597-025-04715-4}{doi:10.1038/s41597-025-04715-4}. & Dataset kualitas air yang ada berbeda unit, parameter, dan resolusi serta belum menyediakan himpunan besar yang terharmonisasi untuk analisis lintas wilayah. & 2,82 juta rekaman tahun 1940--2023 dari Amerika Serikat, Kanada, Irlandia, England, dan China; delapan parameter: amonia, BOD$_5$, DO, ortofosfat, pH, suhu, nitrogen, dan nitrat. & Akuisisi multisumber; penerjemahan dan standardisasi unit/waktu; pemeriksaan duplikasi, nilai hilang, dan pencilan; validasi statistik, perhitungan WQI, serta uji beberapa model ML. & Dataset terharmonisasi dan terbuka berhasil dibentuk. Validasi menunjukkan data dapat digunakan untuk analisis WQI dan ML; model berbasis pohon memperoleh kecocokan tinggi pada target yang diuji. & Cakupan hanya lima negara dan distribusi ruang-waktu tidak seimbang. Data historis berasal dari protokol berbeda, nilai hilang tetap ada, dan pencilan sengaja dipertahankan. Akurasi tinggi pada WQI perlu diwaspadai jika target dibentuk dari prediktor yang sama. \\
+\hline
+
+2 & Sun dan Fan (2022), \textit{A Combined Water Quality Pollution Prediction Model Based on the Spark Big Data Platform}. AQUA. \href{https://doi.org/10.2166/aqua.2022.036}{doi:10.2166/aqua.2022.036}. & Hubungan nonlinear pada deret kualitas air memperlambat pelatihan skala besar dan menurunkan ketepatan metode prediksi tunggal. & 458 sampel bulanan DO, NH$_3$-N, dan fosfor dari stasiun Chuanyang River, Shanghai Taihu Lake Basin, Desember 1991--Desember 2021. Data 1991--2019 untuk pelatihan dan 2020--2021 untuk pengujian. & EEMD memecah deret menjadi komponen; Cascade SVM dilatih paralel dengan Spark/HDFS pada tiga mesin virtual; hasil komponen digabungkan kembali. & Model EEMD--Spark--Cascade SVM dilaporkan lebih akurat dan membutuhkan waktu prediksi serta pelatihan lebih rendah dibanding model pembanding dalam eksperimen. & Hanya satu stasiun, tiga indikator, dan 458 sampel sehingga klaim skala besar terbatas. Tidak ada tolok ukur pipeline ujung ke ujung terhadap Pandas; konfigurasi Spark 2.0 dan perangkat virtual membatasi generalisasi kinerja. \\
+\hline
+
+3 & Uddin, Nash, Rahman, dan Olbert (2023), \textit{Performance Analysis of the Water Quality Index Model for Predicting Water State Using Machine Learning Techniques}. PSEP. \href{https://doi.org/10.1016/j.psep.2022.11.073}{doi:10.1016/j.psep.2022.11.073}. & Formulasi dan skema kelas WQI yang berbeda dapat memberi interpretasi berlainan untuk kondisi air yang sama; dibutuhkan pengujian klasifikator dan formulasi indeks. & Data pemantauan pesisir Cork Harbour dari Environmental Protection Agency Irlandia; kelas dibentuk menggunakan tujuh model WQI yang telah digunakan dan tiga model usulan. & Membandingkan SVM, Naive Bayes, Random Forest, KNN, dan XGBoost; evaluasi memakai akurasi, presisi, sensitivitas, spesifisitas, dan F1-score. & KNN mencapai 100\% benar dan XGBoost 99,9\%. Validasi XGBoost menghasilkan akurasi 1,00 dan F1 0,99; formulasi WQM dan RMS memberi klasifikasi paling konsisten. & Berlaku pada lingkungan pesisir dan skema WQI yang diuji. Label diturunkan dari parameter air yang juga menjadi masukan sehingga kinerja tinggi dapat mencerminkan pembelajaran ulang aturan indeks, bukan generalisasi spasial atau temporal. \\
+\hline
+
+4 & Wong dkk. (2022), \textit{Water Quality Index Using Modified Random Forest Technique: Assessing Novel Input Features}. CMES. \href{https://doi.org/10.32604/cmes.2022.019244}{doi:10.32604/cmes.2022.019244}. & WQI Malaysia memakai enam parameter dan dapat mengabaikan nutrien, mikroba, logam, serta pencemar lain yang relevan bagi sungai perkotaan. & 5.483 sampel pada 94 stasiun di Sungai Klang dan Langat, 2014--2019; 23 parameter fisikokimia, ion, logam, E. coli, dan total coliform. & Lima regresor disaring; Random Forest digunakan untuk regresi dan klasifikasi dengan 17 fitur alternatif; SMOTE menangani kelas minoritas dan analisis sensitivitas menilai kontribusi fitur. & Random Forest memperoleh $R^2=0{,}974$; klasifikasi mencapai akurasi 77,68\%, presisi 74\%, recall 69\%, dan F1 71\%. Kekeruhan menjadi fitur penting; SMOTE menaikkan sensitivitas dari 45\% menjadi 69\%. & Target WQI tidak memuat 17 fitur alternatif sehingga galat masih besar dan hasil belum cukup untuk membentuk indeks baru. Studi terbatas pada dua sungai; data sintetis SMOTE berpotensi menambah derau dan perlu validasi eksternal. \\
+\hline
+
+5 & Zheng, Liu, Wan, Zhao, dan Xie (2023), \textit{Large-Scale Prediction of Stream Water Quality Using an Interpretable Deep Learning Approach}. JEM. \href{https://doi.org/10.1016/j.jenvman.2023.117309}{doi:10.1016/j.jenvman.2023.117309}. & Prediksi deep learning berskala wilayah sulit dijelaskan secara lingkungan, sementara model proses memerlukan data dan kalibrasi yang berat. & Variasi harian enam parameter air pada 138 sub-DAS seluas lebih dari 575.250 km$^2$ di China selatan, beserta 19 prediktor meteorologi, hidrologi, penggunaan lahan, dan sosial ekonomi. & ANN lima lapis dengan tiga skenario masukan; evaluasi MSE, MAE, dan $R^2$; SHAP menjelaskan kepentingan dan arah pengaruh prediktor. & $R^2$ COD, TP, dan TN melebihi 0,80. Penambahan penggunaan lahan dan sosial ekonomi meningkatkan akurasi. Kepadatan penduduk dan proporsi urban menjadi prediktor penting untuk parameter tertentu. & Kinerja berbeda antarparameter dan temuan berasal dari satu kawasan di China. Prediktor sosial ekonomi berada pada skala sub-DAS sehingga tidak mewakili sumber pencemar lokal; SHAP menjelaskan asosiasi model, bukan hubungan kausal. \\
+\hline
+\pagebreak
+
+6 & Li dkk. (2023), \textit{Urbanization and Agriculture Intensification Jointly Enlarge the Spatial Inequality of River Water Quality}. STOTEN. \href{https://doi.org/10.1016/j.scitotenv.2023.162559}{doi:10.1016/j.scitotenv.2023.162559}. & Dampak pola spasial lanskap antropogenik terhadap ketimpangan degradasi kualitas sungai pada skala nasional belum dipahami dengan baik. & Enam variabel kualitas air pada 1.710 lokasi sungai di China pada musim kering 2020: pH, DO, COD, NH$_3$-N, TP, dan TN; dilengkapi pola lanskap perkotaan dan pertanian. & Mengukur degradasi kualitas air, mengidentifikasi variabel pengganggu utama, dan menganalisis pengelompokan serta keterkaitan spasialnya dengan lanskap antropogenik. & Sebanyak 10,29\% lokasi menunjukkan kondisi terdegradasi; nitrogen dan fosfor menjadi gangguan utama. Degradasi lebih berat di China utara dan timur serta konsisten secara spasial dengan agregasi kota dan pertanian. & Potret satu musim dan satu tahun tidak menangkap variasi temporal. Urbanisasi dan pertanian berlangsung bersamaan sehingga kontribusi masing-masing sulit dipisahkan; temuan tingkat nasional tidak langsung berlaku pada titik pemantauan England. \\
+\hline
+
+7 & Rohmadi, Sekine, dan Setiawan (2022), \textit{Impact of Slum Upgrading to River Water Quality in Yogyakarta City, Indonesia}. Jurnal Teknosains. \href{https://doi.org/10.22146/teknosains.78952}{doi:10.22146/teknosains.78952}. & Perlu diketahui apakah peningkatan kawasan kumuh dan infrastruktur sanitasi berkaitan dengan perubahan kualitas Sungai Winongo, Code, dan Gajahwong. & Data pemerintah 2013--2021: sepuluh parameter kualitas air, luas/rasio kawasan kumuh, kepadatan penduduk, jumlah instalasi pengolahan air limbah, dan rumah yang terhubung. & Korelasi Pearson dan Spearman; uji t berpasangan dan Wilcoxon signed-rank untuk menilai perubahan sebelum dan sesudah peningkatan kawasan. & Kepadatan penduduk berkorelasi positif dengan total dan fecal coliform ($p<0{,}05$). Rasio kawasan kumuh berkorelasi dengan BOD, COD, TSS, pH, dan NH$_3$-N; beberapa pencemar organik menurun setelah peningkatan kawasan. & Korelasi tidak membuktikan sebab-akibat dan variabel pengganggu tidak sepenuhnya dikendalikan. Data agregat pemerintah dan konteks tiga sungai perkotaan membatasi resolusi spasial serta generalisasi ke England. \\
+\hline
+
+8 & Campos dkk. (2026), \textit{Automated Machine Learning Achieves Accurate Water Quality Prediction with Reduced Parameter Requirements}. Scientific Reports. \href{https://doi.org/10.1038/s41598-025-34448-8}{doi:10.1038/s41598-025-34448-8}. & Perhitungan WQI memerlukan banyak parameter dan pengembangan model berperforma tinggi membutuhkan keahlian serta komputasi; perlu diuji apakah input dapat dikurangi. & Rekaman 36 tahun dari jaringan pemantauan nasional Taiwan; empat fitur yang mudah diukur: konduktivitas listrik, padatan tersuspensi, suhu air, dan pH. & Pipeline AutoGluon mengotomatiskan praproses, pemilihan model, penyetelan, bagging, dan stacking; beberapa keluarga model dibandingkan dan kepentingan fitur dianalisis. & Weighted Ensemble L2 memperoleh $R^2=0{,}76\pm0{,}04$; CatBoost, Random Forest, dan XGBoost termasuk model terbaik. Konduktivitas listrik paling penting dan pengurangan input tetap memberi prediksi kompetitif. & Pembagian acak dapat mencampur lokasi/waktu antara latih dan uji. Ensemble bersifat kotak hitam dan mahal; validasi geografis di luar Taiwan belum dilakukan. Target kontinu sehingga hasil tidak langsung setara dengan klasifikasi WQI multikelas. \\
+\hline
+
+9 & Liu, Chu, Yuan, Zhang, dan Yue (2024), \textit{WQI Improvement Based on XG-BOOST Algorithm and Exploration of Optimal Indicator Set}. Sustainability. \href{https://doi.org/10.3390/su162410991}{doi:10.3390/su162410991}. & WQI tradisional dapat diperbaiki dan jumlah indikator perlu dipilih agar evaluasi air tanah lebih efisien tanpa kehilangan ketepatan. & Sepuluh indikator pada 246 titik pemantauan air tanah di sebagian Manas River Basin, Xinjiang: F, Cl, NO$_3$, SO$_4$, Ag, Al, Fe, Pb, Se, dan Zn. & Membandingkan XGBoost, SVM, Random Forest, dan Decision Tree berdasarkan AUC; XGBoost dipakai untuk peningkatan WQI dan penyaringan kombinasi indikator, dilanjutkan pemetaan spasial. & XGBoost memberi AUC 0,91, mengungguli SVM dan RF (0,87). Lima indikator Cl, NO$_3$, Pb, Se, dan Zn menghasilkan akurasi 98\%, RMSE 0,1414, dan $R^2=0{,}9081$. & Sampel relatif kecil dan hanya dari satu bagian DAS. Status tercemar dibentuk dari ambang indikator dan turut dipakai dalam konstruksi model, sehingga ada risiko kebocoran informasi; hasil air tanah tidak langsung mewakili air permukaan. \\
+\hline
+
+10 & Hussein dkk. (2023), \textit{Machine Learning Algorithms for Predicting the Water Quality Index}. Water. \href{https://doi.org/10.3390/w15203540}{doi:10.3390/w15203540}. & Perhitungan subindeks WQI memakan waktu dan rawan kesalahan; klasifikator diperlukan untuk mempercepat penentuan kelas air. & 80 sampel air tanah Sakrand, Sindh, Pakistan dengan 17 parameter; 65 sampel latih dan 15 uji, tiga kelas WQI: excellent, good, dan poor. & MATLAB Classification Learner membandingkan Decision Tree, SVM, KNN, Ensemble Tree, dan Discriminant Analysis pada data mentah serta ternormalisasi; pelatihan memakai validasi silang 10 lipatan. & SVM linear terbaik. Akurasi latih 90,8\% pada data mentah dan 89,2\% pada data normalisasi; akurasi uji terbaik mencapai 93,33\% pada data ternormalisasi. & Ukuran sampel sangat kecil, kelas uji tidak seimbang, dan hanya 15 observasi dipakai untuk pengujian sehingga metrik tidak stabil. Cakupan air tanah satu kota dan label hasil rumus WQI membatasi generalisasi. \\
+
+\end{longtable}
+
+\end{document}
