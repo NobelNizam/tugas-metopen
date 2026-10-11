@@ -1,0 +1,42 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[indonesian]{babel}
+\usepackage[landscape,left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{times}
+
+\pagestyle{plain}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}
+    {\Large\bfseries Matriks Konsistensi Penelitian}\par
+    \vspace{4pt}
+    Nobel Nizam Fathirizki -- 123450117
+\end{center}
+
+\vspace{8pt}
+
+\begin{table}[h]
+    \centering
+    \scriptsize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabularx}{\linewidth}{|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+        \hline
+        \textbf{No.} & \textbf{Rumusan masalah} & \textbf{Tujuan penelitian} & \textbf{Data atau variabel} & \textbf{Metode analisis} & \textbf{Indikator dan luaran} \\
+        \hline
+        1 & Bagaimana perbedaan kinerja pipeline Medallion--Spark dan Pandas jika dievaluasi berdasarkan waktu pemrosesan dan throughput? & Mengevaluasi perbedaan kinerja kedua pipeline berdasarkan waktu pemrosesan dan throughput. & Rekaman kualitas air England; ukuran data; waktu mulai dan selesai; jumlah baris yang diproses. & Menjalankan proses \textit{batch} pada lingkungan lokal yang sama dan membandingkan hasil beberapa pengulangan. & Waktu pemrosesan ujung ke ujung, throughput (baris/detik), serta tabel perbandingan pipeline. \\
+        \hline
+        2 & Seberapa besar pengaruh penambahan kepadatan penduduk terhadap klasifikasi WQI jika dianalisis melalui perbandingan dengan parameter fisikokimia saja? & Menganalisis pengaruh \texttt{pop\_density} melalui perbandingan dengan model fisikokimia. & Delapan parameter fisikokimia; \texttt{pop\_density}; kelas WQI. & Studi ablasi: membandingkan model tanpa dan dengan \texttt{pop\_density} pada partisi data dan konfigurasi evaluasi yang sama. & Selisih akurasi dan F1-score makro, beserta analisis kontribusi fitur tanpa penafsiran kausal. \\
+        \hline
+        3 & Bagaimana perbedaan kinerja Random Forest dan XGBoost jika dibandingkan dalam klasifikasi WQI pada prosedur evaluasi yang sama? & Membandingkan kinerja Random Forest dan XGBoost pada prosedur evaluasi yang sama. & Tabel fitur lapisan \textit{Gold}; kelas WQI; keluaran prediksi kedua algoritma. & Melatih dan menguji kedua algoritma pada partisi data yang sama, kemudian membandingkan metrik klasifikasi per kelas dan secara keseluruhan. & Akurasi, F1-score makro, matriks konfusi, serta model dengan kinerja lebih baik pada data uji. \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\end{document}

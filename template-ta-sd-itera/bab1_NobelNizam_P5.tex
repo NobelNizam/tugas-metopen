@@ -1,0 +1,18 @@
+% Driver Bab 1 Pendahuluan dan Daftar Pustaka
+% Compile: latexmk -pdf bab1_NobelNizam_P5.tex
+\documentclass{gaya}
+
+\input{pustaka/variables.tex}
+\input{pustaka/jenis-dokumen.tex}
+\input{pustaka/tanda-hubung.tex}
+
+\begin{document}
+
+\pagenumbering{arabic}
+\include{bab/1-pendahuluan.tex}
+
+\phantomsection
+\sloppy
+\printbibliography
+
+\end{document}

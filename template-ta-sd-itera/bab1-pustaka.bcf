@@ -2374,12 +2374,13 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">pustaka/pustaka.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">luo_impacts_2018</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">karim_comprehensive_2025</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">zaharia_apache_2016</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">sun_combined_2022</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">worldpop_uk_density</bcf:citekey>
-    <bcf:citekey order="6" intorder="1">ccme_canadian_2007</bcf:citekey>
+    <bcf:citekey order="1" intorder="1">karim_comprehensive_2025</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">luo_impacts_2018</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">karim_comprehensive_2025</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">worldpop_uk_density</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">zaharia_apache_2016</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">sun_combined_2022</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">ccme_canadian_2007</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

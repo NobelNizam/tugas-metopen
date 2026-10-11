@@ -1,0 +1,345 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{karim_comprehensive_2025}{article}{}{}
+      \name{author}{8}{}{%
+        {{hash=a4469a8a5ee74f29657706b97e6545eb}{%
+           family={Karim},
+           familyi={K\bibinitperiod},
+           given={Md.\bibnamedelimi Rajaul},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=6968f316020c038228916fd4ba5031b2}{%
+           family={Syeed},
+           familyi={S\bibinitperiod},
+           given={M.\bibnamedelimi M.\bibnamedelimi Mahbubul},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=970bb7317e293786fe4acc165d0fb467}{%
+           family={Rahman},
+           familyi={R\bibinitperiod},
+           given={Ashifur},
+           giveni={A\bibinitperiod}}}%
+        {{hash=50852b9584870235bbb94f2952697e20}{%
+           family={Ayaz\bibnamedelima Rabbani},
+           familyi={A\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={Khondkar},
+           giveni={K\bibinitperiod}}}%
+        {{hash=70251fe94286c87a29267785658aed0a}{%
+           family={Fatema},
+           familyi={F\bibinitperiod},
+           given={Kaniz},
+           giveni={K\bibinitperiod}}}%
+        {{hash=d232bd91916e31006f923aa46512826d}{%
+           family={Khan},
+           familyi={K\bibinitperiod},
+           given={Razib\bibnamedelima Hayat},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=5f2c35133ff55aa8bf135030cac1da83}{%
+           family={Hossain},
+           familyi={H\bibinitperiod},
+           given={Md\bibnamedelima Shakhawat},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=a7c69970bc204521813509d06429dfa4}{%
+           family={Uddin},
+           familyi={U\bibinitperiod},
+           given={Mohammad\bibnamedelima Faisal},
+           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{195ef65659dabbf24f49e0ae485632ef}
+      \strng{fullhash}{1912ed128f9a72bfee55625f12f8c6a7}
+      \strng{fullhashraw}{1912ed128f9a72bfee55625f12f8c6a7}
+      \strng{bibnamehash}{195ef65659dabbf24f49e0ae485632ef}
+      \strng{authorbibnamehash}{195ef65659dabbf24f49e0ae485632ef}
+      \strng{authornamehash}{195ef65659dabbf24f49e0ae485632ef}
+      \strng{authorfullhash}{1912ed128f9a72bfee55625f12f8c6a7}
+      \strng{authorfullhashraw}{1912ed128f9a72bfee55625f12f8c6a7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Scientific Data}
+      \field{title}{A Comprehensive Dataset of Surface Water Quality Spanning 1940-2023 for Empirical and {ML} Adopted Research}
+      \field{volume}{12}
+      \field{year}{2025}
+      \verb{doi}
+      \verb 10.1038/s41597-025-04715-4
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1038/s41597-025-04715-4
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1038/s41597-025-04715-4
+      \endverb
+    \endentry
+    \entry{luo_impacts_2018}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=384c2cf85f0e11e983ea193103b000e8}{%
+           family={Luo},
+           familyi={L\bibinitperiod},
+           given={Kun},
+           giveni={K\bibinitperiod}}}%
+        {{hash=d7b73f339abddd01242172623ad8b056}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Xuebin},
+           giveni={X\bibinitperiod}}}%
+        {{hash=a2b28ed649a92db07015da432a5f8c0b}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Qiang},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=582705deb769d2b889580020bf6e33f8}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Zhengsong},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=f72448b448f784a30f7d333a8eee90be}{%
+           family={Cheng},
+           familyi={C\bibinitperiod},
+           given={Hao},
+           giveni={H\bibinitperiod}}}%
+        {{hash=e6ac40cf05da5534bfb5601852277817}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Zhenlong},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=93f196f09a847f994c20a911ae6f307d}{%
+           family={Mazumder},
+           familyi={M\bibinitperiod},
+           given={Asit},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{a8705407b7329aa3b6688f21ac69384a}
+      \strng{fullhash}{60aca81427b16ef207ddd24a496c8824}
+      \strng{fullhashraw}{60aca81427b16ef207ddd24a496c8824}
+      \strng{bibnamehash}{a8705407b7329aa3b6688f21ac69384a}
+      \strng{authorbibnamehash}{a8705407b7329aa3b6688f21ac69384a}
+      \strng{authornamehash}{a8705407b7329aa3b6688f21ac69384a}
+      \strng{authorfullhash}{60aca81427b16ef207ddd24a496c8824}
+      \strng{authorfullhashraw}{60aca81427b16ef207ddd24a496c8824}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Science of The Total Environment}
+      \field{title}{Impacts of rapid urbanization on the water quality and macroinvertebrate communities of streams: {A} case study in {Liangjiang} {New} {Area}, {China}}
+      \field{volume}{621}
+      \field{year}{2018}
+      \field{pages}{1601\bibrangedash 1614}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1016/j.scitotenv.2017.10.068
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.scitotenv.2017.10.068
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/j.scitotenv.2017.10.068
+      \endverb
+    \endentry
+    \entry{worldpop_uk_density}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=2cafe390d83f4553302de90ffbc77947}{%
+           family={{WorldPop}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {WorldPop Hub, University of Southampton}%
+      }
+      \strng{namehash}{2cafe390d83f4553302de90ffbc77947}
+      \strng{fullhash}{2cafe390d83f4553302de90ffbc77947}
+      \strng{fullhashraw}{2cafe390d83f4553302de90ffbc77947}
+      \strng{bibnamehash}{2cafe390d83f4553302de90ffbc77947}
+      \strng{authorbibnamehash}{2cafe390d83f4553302de90ffbc77947}
+      \strng{authornamehash}{2cafe390d83f4553302de90ffbc77947}
+      \strng{authorfullhash}{2cafe390d83f4553302de90ffbc77947}
+      \strng{authorfullhashraw}{2cafe390d83f4553302de90ffbc77947}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{United Kingdom Population Density (1km)}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://hub.worldpop.org
+      \endverb
+      \verb{url}
+      \verb https://hub.worldpop.org
+      \endverb
+    \endentry
+    \entry{zaharia_apache_2016}{article}{}{}
+      \name{author}{14}{}{%
+        {{hash=00dc518b94dfa6349c86e70661a1a5ef}{%
+           family={Zaharia},
+           familyi={Z\bibinitperiod},
+           given={Matei},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5f4b66d7cacadea3e7b21ebcc1706643}{%
+           family={Xin},
+           familyi={X\bibinitperiod},
+           given={Reynold\bibnamedelima S.},
+           giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=54749885e1243b01239492a603b6a69e}{%
+           family={Wendell},
+           familyi={W\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+        {{hash=f8b27ed8b503bc3e7b32fc53bace3697}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={Tathagata},
+           giveni={T\bibinitperiod}}}%
+        {{hash=8eafad8289b06f72c2e8b7caf80a413a}{%
+           family={Armbrust},
+           familyi={A\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=aec50de877bd49b0c55f7067c573cd4f}{%
+           family={Dave},
+           familyi={D\bibinitperiod},
+           given={Ankur},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2776c215c8df7c9787aea25db59709d0}{%
+           family={Meng},
+           familyi={M\bibinitperiod},
+           given={Xiangrui},
+           giveni={X\bibinitperiod}}}%
+        {{hash=365d3ec4a85f5051e18fc7c1e63b210b}{%
+           family={Rosen},
+           familyi={R\bibinitperiod},
+           given={Josh},
+           giveni={J\bibinitperiod}}}%
+        {{hash=721534f33cd88b3753e3bb459468783f}{%
+           family={Venkataraman},
+           familyi={V\bibinitperiod},
+           given={Shivaram},
+           giveni={S\bibinitperiod}}}%
+        {{hash=2b80efa845ff86794acc83783899dcf0}{%
+           family={Franklin},
+           familyi={F\bibinitperiod},
+           given={Michael\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=dfd14c69d2338ce9cf556c819a32d286}{%
+           family={Ghodsi},
+           familyi={G\bibinitperiod},
+           given={Ali},
+           giveni={A\bibinitperiod}}}%
+        {{hash=fa1b97983892cfef89de6a1b63f97bcc}{%
+           family={Gonzalez},
+           familyi={G\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8d2fd528d2484047352789c731e250a5}{%
+           family={Shenker},
+           familyi={S\bibinitperiod},
+           given={Scott},
+           giveni={S\bibinitperiod}}}%
+        {{hash=51d9ef26181e2e8a9dc546b401e0bb26}{%
+           family={Stoica},
+           familyi={S\bibinitperiod},
+           given={Ion},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{43b7683e391995e2f59755c9e939df3c}
+      \strng{fullhash}{db58da147f3a9dc425d70c1d3ba53b07}
+      \strng{fullhashraw}{db58da147f3a9dc425d70c1d3ba53b07}
+      \strng{bibnamehash}{43b7683e391995e2f59755c9e939df3c}
+      \strng{authorbibnamehash}{43b7683e391995e2f59755c9e939df3c}
+      \strng{authornamehash}{43b7683e391995e2f59755c9e939df3c}
+      \strng{authorfullhash}{db58da147f3a9dc425d70c1d3ba53b07}
+      \strng{authorfullhashraw}{db58da147f3a9dc425d70c1d3ba53b07}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Communications of the ACM}
+      \field{number}{11}
+      \field{title}{Apache Spark: A Unified Engine for Big Data Processing}
+      \field{volume}{59}
+      \field{year}{2016}
+      \field{pages}{56\bibrangedash 65}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1145/2934664
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/2934664
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/2934664
+      \endverb
+    \endentry
+    \entry{sun_combined_2022}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=d5a3db3dbf532320ff69e6299158e063}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Zhihui},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=a28ecafb025ad6af01dbc66e725cfdea}{%
+           family={Fan},
+           familyi={F\bibinitperiod},
+           given={Yiqing},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{b405d18fbfc78d887d46c76b8fda4b92}
+      \strng{fullhash}{b405d18fbfc78d887d46c76b8fda4b92}
+      \strng{fullhashraw}{b405d18fbfc78d887d46c76b8fda4b92}
+      \strng{bibnamehash}{b405d18fbfc78d887d46c76b8fda4b92}
+      \strng{authorbibnamehash}{b405d18fbfc78d887d46c76b8fda4b92}
+      \strng{authornamehash}{b405d18fbfc78d887d46c76b8fda4b92}
+      \strng{authorfullhash}{b405d18fbfc78d887d46c76b8fda4b92}
+      \strng{authorfullhashraw}{b405d18fbfc78d887d46c76b8fda4b92}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Water Supply: Research and Technology-Aqua}
+      \field{number}{9}
+      \field{title}{A combined water quality pollution prediction model based on the {Spark} big data platform}
+      \field{volume}{71}
+      \field{year}{2022}
+      \field{pages}{963\bibrangedash 974}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.2166/aqua.2022.036
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.2166/aqua.2022.036
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.2166/aqua.2022.036
+      \endverb
+    \endentry
+    \entry{ccme_canadian_2007}{report}{}{}
+      \list{institution}{1}{%
+        {Canadian Council of Ministers of the Environment}%
+      }
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labeltitlesource}{title}
+      \field{title}{Canadian Water Quality Index 1.0, Technical Report, User's Manual}
+      \field{type}{Technical Report}
+      \field{year}{2007}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

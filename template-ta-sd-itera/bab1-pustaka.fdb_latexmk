@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber bab1-pustaka"] 1791218796.14136 "bab1-pustaka.bcf" "bab1-pustaka.bbl" "bab1-pustaka" 1791218802.11369 0
-  "bab1-pustaka.bcf" 1791218801.97846 108249 33ac46ebd99a8e31f7f3ca06695c052a "pdflatex"
+["biber bab1-pustaka"] 1791647965.45724 "bab1-pustaka.bcf" "bab1-pustaka.bbl" "bab1-pustaka" 1791648038.03961 0
+  "bab1-pustaka.bcf" 1791648037.88617 108328 929c63cd0ef698666351488bd79213d7 "pdflatex"
   "pustaka/pustaka.bib" 1790768402.58199 6108 670d5830beee6e46c85ea494d5c53fe3 ""
   (generated)
   "bab1-pustaka.bbl"
   "bab1-pustaka.blg"
   (rewritten before read)
-["pdflatex"] 1791218800.51409 "bab1-pustaka.tex" "bab1-pustaka.pdf" "bab1-pustaka" 1791218802.11403 0
+["pdflatex"] 1791648036.17319 "bab1-pustaka.tex" "bab1-pustaka.pdf" "bab1-pustaka" 1791648038.04033 0
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1775415801 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1775415801 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm" 1775415801 3584 f80ddd985bd00e29e9a6047ebd9d4781 ""
@@ -14,7 +14,6 @@
   "/usr/share/texmf-dist/fonts/tfm/public/latex-fonts/lasy10.tfm" 1775415801 520 82a3d37183f34b6eb363a161dfc002c2 ""
   "/usr/share/texmf-dist/fonts/tfm/public/latex-fonts/lasy5.tfm" 1775415801 520 d082ac03a1087bc1ec2a06e24a9f68c0 ""
   "/usr/share/texmf-dist/fonts/tfm/public/latex-fonts/lasy6.tfm" 1775415801 520 4889cce2180234b97cad636b6039c722 ""
-  "/usr/share/texmf-dist/fonts/tfm/public/latex-fonts/lasy7.tfm" 1775415801 520 a74c6ed8cb48679fdc3ea874d9d34a7e ""
   "/usr/share/texmf-dist/fonts/tfm/public/latex-fonts/lasy8.tfm" 1775415801 520 7bb3abb160b19e0ed6ac404bb59052b7 ""
   "/usr/share/texmf-dist/fonts/tfm/public/txfonts/rtxb.tfm" 1775415801 1020 c53143d3e3747b5c1149bd9a5ecd7b55 ""
   "/usr/share/texmf-dist/fonts/tfm/public/txfonts/rtxi.tfm" 1775415801 1048 a97cff5f6b833b712079817ce7a40d4c ""
@@ -37,10 +36,8 @@
   "/usr/share/texmf-dist/fonts/tfm/public/txfonts/txsya.tfm" 1775415801 972 2c9ffac4bbd20f91c01aaef9bf3f8710 ""
   "/usr/share/texmf-dist/fonts/tfm/public/txfonts/txsyb.tfm" 1775415801 988 098ca7e8cc5647b9ac21b82dbdce1f01 ""
   "/usr/share/texmf-dist/fonts/tfm/public/txfonts/txsyc.tfm" 1775415801 1084 75e807e9e71f7a312e4e1187dce5e93b ""
-  "/usr/share/texmf-dist/fonts/type1/public/txfonts/rtxb.pfb" 1775415801 6330 bdd610a36762742dd8a518bf9f97b968 ""
   "/usr/share/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb" 1775415801 6339 e2b78706efdc360ee6aec9b6e20211a7 ""
   "/usr/share/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb" 1775415801 26301 f08b3c26ea42c3177a262c2ac37d6a91 ""
-  "/usr/share/texmf-dist/fonts/type1/public/txfonts/txsy.pfb" 1775415801 20336 69267d8a81bca8b24c9b42694a4a28f9 ""
   "/usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb" 1775415801 44729 811d6c62865936705a31c797a1d5dada ""
   "/usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb" 1775415801 46026 6dab18b61c907687b520c72847215a68 ""
   "/usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb" 1775415801 45458 a3faba884469519614ca56ba5f6b1de1 ""
@@ -244,12 +241,12 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1775415801 43569 fd570f2fa160877d211e859f687312ba ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1790768169 5541339 b32eb00eb34cd5c925a7827d916d9dbd ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1790768108 2328193 2caf910c67172d88ae65582b08333c62 ""
-  "bab/1-pendahuluan.aux" 1791218801.82911 6256 49ebe06c32d30cd002f893b384ad5531 "pdflatex"
-  "bab/1-pendahuluan.tex" 1790770592.14501 10708 b88151fb0736adc57cb638d5cd7d8d1d ""
-  "bab1-pustaka.aux" 1791218801.97044 1493 c4c3b8aa1af4772cdacb8deba47594b0 "pdflatex"
-  "bab1-pustaka.bbl" 1791218797.0925 13392 1e016d628c116241dab3a3f862d87b98 "biber bab1-pustaka"
-  "bab1-pustaka.out" 1791218801.97461 1061 fdcc8815ac3c1b45f3b1650bb894e049 "pdflatex"
-  "bab1-pustaka.run.xml" 1791218801.98069 2462 f4a3925f1afc389aedfaadd3f5103a15 "pdflatex"
+  "bab/1-pendahuluan.aux" 1791648037.70585 6521 6ce9f8d7613ff8f855bad0d3a026480d "pdflatex"
+  "bab/1-pendahuluan.tex" 1791648030.93616 13542 16e55be1453491f622b436ed1a70193c ""
+  "bab1-pustaka.aux" 1791648037.8795 1582 f22da28ce10ee6bf6eed8360be2feb6a "pdflatex"
+  "bab1-pustaka.bbl" 1791647966.48101 13392 52541635c9c48c081870af4aadedf638 "biber bab1-pustaka"
+  "bab1-pustaka.out" 1791648037.88617 1270 bee83053d8b4f465f8e27344e8ef61e3 "pdflatex"
+  "bab1-pustaka.run.xml" 1791648037.89025 2462 f4a3925f1afc389aedfaadd3f5103a15 "pdflatex"
   "bab1-pustaka.tex" 1791218783.83761 735 eef366d673205357a87e84a2956fc3c4 ""
   "bahasa.lbx" 1725930833 38334 bd07d4fc91e323a4123a84585428f071 ""
   "gaya.cls" 1790769091.16971 23521 38aac4248b5694ab3e2563de2d859495 ""
