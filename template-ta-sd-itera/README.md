@@ -28,6 +28,19 @@ Selain file `main.tex`, ada juga beberapa bagian lain dari template ini yang bis
 > Penjelasan lebih lanjut mengenai penggunaan template ini akan dijelaskan dengan comment yang tersedia pada setiap file yang ada.
 > Dapat dilihat pada [video Youtube](https://www.youtube.com/live/Bx4Jcr87kbo) juga.
 
+## Kompilasi Bab III
+
+Isi metode penelitian berada pada `bab/3-metodologi-penelitian.tex` dan sudah digunakan oleh `main.tex`. Driver `bab-3.tex` menghasilkan dokumen mandiri BAB III beserta 16 referensi dengan daftar dan urutan yang sama seperti Bab II. Dokumen pendukung khusus Bab III ditautkan melalui catatan kaki. Gaya dokumen mengikuti template bab lain.
+
+Jalankan dari folder `template-ta-sd-itera` menggunakan LaTeX dan Biber:
+
+```bash
+latexmk -pdf -outdir=build/bab-3 bab-3.tex
+cp build/bab-3/bab-3.pdf bab-3.pdf
+```
+
+PDF akhir diletakkan di root folder ini dengan nama `bab-3.pdf`; berkas bantu kompilasi berada di `build/`. Catatan pemeriksaan sumber untuk rancangan metode tersedia di `../docs/audit-sumber-bab-3.md`.
+
 ## Contoh Skripsi
 
 Berikut adalah skripsi yang dibuat menggunakan template ini, yaitu

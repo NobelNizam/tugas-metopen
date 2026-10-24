@@ -1,0 +1,33 @@
+% Driver mandiri BAB III dan 16 referensi yang sama dengan BAB II.
+% Kompilasi: latexmk -pdf -outdir=build/bab-3 bab-3.tex
+% Salin build/bab-3/bab-3.pdf ke bab-3.pdf setelah pemeriksaan.
+\documentclass{gaya}
+
+\input{pustaka/variables.tex}
+\input{pustaka/jenis-dokumen.tex}
+\input{pustaka/tanda-hubung.tex}
+
+\AtBeginBibliography{\raggedright\interlinepenalty=10000}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+
+\hypersetup{
+    pdftitle={BAB III - Metode Penelitian},
+    pdfauthor={Nobel Nizam Fathirizki},
+    pdfsubject={Klasifikasi kualitas air England dan evaluasi pipeline Medallion}
+}
+
+\begin{document}
+\pagenumbering{arabic}
+\setcounter{chapter}{2}
+% Pertahankan daftar dan urutan referensi seperti pada BAB II.
+% Dokumen pendukung khusus BAB III ditautkan melalui catatan kaki.
+\nocite{karim_comprehensive_2025,wong_water_2022,campos_automated_2026,zheng_large_2023,li_urbanization_2023,rohmadi_impact_2022,uddin_performance_2023,liu_wqi_2024,hussein_machine_2023,sun_combined_2022,ccme_canadian_2007,worldpop_uk_density,databricks_medallion_2024,zaharia_apache_2016,breiman_random_2001,chen_xgboost_2016}
+\input{bab/3-metodologi-penelitian.tex}
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+\printbibliography[title={DAFTAR PUSTAKA}]
+\end{document}

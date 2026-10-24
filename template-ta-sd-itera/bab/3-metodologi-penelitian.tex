@@ -1,106 +1,462 @@
 \chapter{METODE PENELITIAN}
+\label{chap:metode-penelitian}
 
-\section{Isi Metode Penelitian}
-Alat dan bahan yang digunakan pada penelitian ini terbagi atas perangkat keras dan perangkat lunak yang akan dijelaskan seperti berikut.
+\section{Rancangan Penelitian}
 
-\section{Data}
-Pro omnium incorrupte ea. Elitr eirmod ei qui, ex partem causae disputationi nec. Amet dicant no vis, eum modo omnes quaeque ad, antiopam evertitur reprehendunt pro ut. Nulla inermis est ne. Choro insolens mel ne, eos labitur nusquam eu, nec deserunt reformidans ut. His etiam copiosae principes te, sit brute atqui definiebas id.
+Penelitian ini menggunakan pendekatan kuantitatif dengan eksperimen komputasional pada data sekunder. Objek kajian adalah rekaman kualitas air permukaan di England yang diintegrasikan dengan kepadatan penduduk. Pengolahan disusun melalui lapisan \textit{Bronze}, \textit{Silver}, dan \textit{Gold}, kemudian dinilai dari sisi efisiensi pipeline dan kinerja klasifikasi. Bab ini menjelaskan rancangan pelaksanaan; jumlah data akhir, spesifikasi aktual perangkat, serta hasil pengujian dilaporkan setelah eksperimen dilakukan.
 
-\section{Alat dan Bahan}
-Pro omnium incorrupte ea. Elitr eirmod ei qui, ex partem causae disputationi nec. Amet dicant no vis, eum modo omnes quaeque ad, antiopam evertitur reprehendunt pro ut. Nulla inermis est ne. Choro insolens mel ne, eos labitur nusquam eu, nec deserunt reformidans ut. His etiam copiosae principes te, sit brute atqui definiebas id.
+Rancangan mengikuti tiga tujuan penelitian. Pertama, Apache Spark dibandingkan dengan Pandas pada masukan dan transformasi yang sama. Kedua, kontribusi kepadatan penduduk dinilai melalui penambahan satu fitur pada model fisikokimia. Ketiga, Random Forest dibandingkan dengan XGBoost pada unit pengamatan dan partisi yang identik. Pemisahan pengujian memungkinkan perubahan kinerja dihubungkan dengan faktor yang sedang diuji.
 
-    \subsection{Perangkat Keras}
-    Pro omnium incorrupte ea. Elitr eirmod ei qui, ex partem causae disputationi nec. Amet dicant no vis, eum modo omnes quaeque ad, antiopam evertitur reprehendunt pro ut. Nulla inermis est ne. Choro insolens mel ne, eos labitur nusquam eu, nec deserunt reformidans ut. His etiam copiosae principes, teleskop yang bagus.
+\begin{table}[H]
+    \centering
+    \caption{Rancangan pengujian berdasarkan tujuan penelitian}
+    \label{tab:bab3-rancangan}
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\linewidth}{@{}p{2.1cm}*{3}{>{\raggedright\arraybackslash}X}@{}}
+        \toprule
+        Aspek & Faktor perlakuan & Faktor terkendali & Indikator utama \\
+        \midrule
+        Pipeline & Pandas dan Spark & Masukan, aturan, perangkat, dan format keluaran & Waktu proses dan throughput \\
+        Fitur & Tanpa dan dengan kepadatan penduduk & Algoritma, rekaman, partisi, dan konfigurasi & Selisih akurasi dan F1 makro \\
+        Algoritma & Random Forest dan XGBoost & Fitur, partisi, dan anggaran penyetelan & Akurasi dan F1 makro \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
-	\subsection{Perangkat Lunak}
-    Pro omnium incorrupte ea. Elitr eirmod ei qui, ex partem causae disputationi nec. Amet dicant no vis, eum modo omnes quaeque ad, antiopam evertitur reprehendunt pro ut. Nulla inermis est ne. Choro insolens mel ne, eos labitur nusquam eu, nec deserunt reformidans ut. His etiam copiosae principes te, sit brute atqui definiebas id.
-		\begin{enumerate}[a.]
-		\itemsep0em
-			\item Arduino IDE for Windows,
-			\item IRAF,
-		\end{enumerate}
+Tidak ada asumsi bahwa Spark, penambahan fitur, atau algoritma tertentu harus unggul. Spark dapat memiliki biaya inisialisasi yang besar pada data kecil. Kepadatan penduduk juga mungkin tidak menambah informasi setelah parameter fisikokimia diketahui. Hasil tanpa peningkatan tetap relevan apabila diperoleh melalui prosedur yang setara.
 
-\section{Alur Penelitian}
-	Consul graeco signiferumque qui id, usu eu summo dicunt voluptatum, nec ne simul perpetua posidonium. Eos ea saepe prodesset signiferumque. No dolore possit est. Mei no justo intellegebat definitiones, vis ferri lorem eripuit ad. Solum tritani scribentur duo ei, his an adipisci intellegat.
+\section{Data dan Unit Analisis}
 
-\section{Tahapan Pelaksanaan}
-	Consul graeco signiferumque qui id, usu eu summo dicunt voluptatum, nec ne simul perpetua posidonium. Eos ea saepe prodesset signiferumque. No dolore possit est. Mei no justo intellegebat definitiones, vis ferri lorem eripuit ad. Solum tritani scribentur duo ei, his an adipisci intellegat.
+\subsection{Sumber Data dan Periode Penelitian}
 
-\section{Jadwal Kegiatan}
-	Quo no atqui omnesque intellegat, ne nominavi argumentum quo. Eum ei purto oporteat dissentiet, soleat utamur an sit. Et assum dicam interpretaris quo. Cetero alterum ea vel, no possit alterum utroque nec. His fuisset quaestio ad. Has eu tritani incorrupte consequuntur, esse aliquip nec ne \ref{jadwal}.
+Data utama berasal dari dataset Karim dkk. \cite{karim_comprehensive_2025} pada Figshare versi 2.\footnote{\label{fn:bab3-dataset}Dataset dan notebook pendukung versi 2 tersedia pada \url{https://doi.org/10.6084/m9.figshare.27800394.v2}, diakses 24 Oktober 2026.} Publikasi tersebut mencakup sekitar 2,82 juta rekaman multinegara selama 1940--2023; bagian England dilaporkan berjumlah 2.129.198 rekaman pada 2000--2023. Angka tersebut merupakan statistik sumber, bukan jumlah yang dipastikan masuk eksperimen. Jumlah data akhir ditetapkan sesudah audit tanggal, lokasi, parameter, dan target.
 
+Data pendukung menggunakan seri raster kepadatan penduduk WorldPop untuk United Kingdom pada 2000--2020. Contoh produk tahun 2020 tersedia dalam GeoTIFF, memakai WGS84, beresolusi 30 detik busur, dan bersatuan penduduk per kilometer persegi.\footnote{Metadata produk WorldPop tahun 2020 tersedia pada \url{https://hub.worldpop.org/geodata/summary?id=44435}, diakses 24 Oktober 2026.} Resolusi sekitar 1 km mengacu pada ekuator; ukuran sel tidak dianggap tepat 1 km di seluruh England. Produk kepadatan dibedakan dari produk jumlah penduduk per sel agar satuan tidak tertukar.
 
-	%Format tabel ini hanya untuk jadwal kegiatan saja
-	%Bisa dibuat dulu di https://www.tablesgenerator.com/ baru dikopi ke dokumen ini
-		\begin{table}[H]
-		\centering
-		\caption{Jadwal Penelitian.} % caption pakai titik?
-		\label{jadwal}
-		\begin{tabular}{|c|l|l|l|l|l|l|l|}
-		\hline
-		\multirow{2}{*}{No} & \multirow{2}{*}{Keterangan} & \multicolumn{6}{c|}{Bulan}                                                                                                                          \\ \cline{3-8}
-		                    &                             & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
-		1                   & Studi literatur                                  &\cellcolor{gray} &\cellcolor{gray}&                        &                        &                        &                         \\ \hline
-		2                   & Desain                                           &                        &\cellcolor{gray}&\cellcolor{gray}&                        &                        &                         \\ \hline
-		3                   & Pembelian bahan                                  &                        &                        &\cellcolor{gray}&                        &                        &                         \\ \hline
-		4                   & Pembuatan prototipe                              &                        &                        &\cellcolor{gray}&\cellcolor{gray}&\cellcolor{gray}&                         \\ \hline
-		5                   & Uji coba dan perbaikan                           &                        &                        &                        &\cellcolor{gray}&\cellcolor{gray}&                         \\ \hline
-		6                   & Penulisan tugas akhir                               &                        &                        &                        &                        &                        &\cellcolor{gray}\\ \hline
-		\end{tabular}
-		\end{table}
+Analisis utama dibatasi pada irisan waktu kedua sumber, yaitu 2000--2020, menggunakan raster pada tahun pengamatan air yang sama. Rekaman 2021--2023 tetap disimpan sebagai data mentah, tetapi tidak masuk eksperimen gabungan utama. Penelitian tidak menerapkan satu raster tahun 2020 pada seluruh riwayat pengamatan. Tahun dengan raster yang tidak tersedia atau tidak terverifikasi dikeluarkan dari kedua skenario fitur dan dicatat dalam laporan kelengkapan.
 
+\subsection{Audit Metadata Lokasi}
 
-\section{Melampirkan Gambar}
-Pro omnium incorrupte ea. Elitr eirmod ei qui, ex partem causae disputationi nec. Amet dicant no vis, eum modo omnes quaeque ad, antiopam evertitur reprehendunt pro ut. Nulla inermis est ne. Choro insolens mel ne, eos labitur nusquam eu, nec deserunt reformidans ut. His etiam copiosae principes te, sit brute atqui definiebas id.
+Pemeriksaan awal terhadap header \texttt{England\_dataset.csv} versi 2 menunjukkan kolom negara, area, tipe badan air, tanggal, delapan parameter, skor \texttt{CCME\_Values}, dan kelas \texttt{CCME\_WQI}. Header tersebut tidak memuat koordinat maupun pengenal stasiun. Dengan demikian, ketersediaan lokasi yang diperlukan untuk \textit{spatial join} harus dibuktikan melalui metadata tambahan, bukan diasumsikan dari nama area.
+
+Tabel penghubung lokasi direncanakan berasal dari metadata resmi sumber pemantauan yang dirujuk penerbit. Penghubung harus menyertakan pengenal stasiun atau sampel, koordinat, sistem referensi koordinat, serta asal rekaman. Pencocokan ke CSV terbitan memerlukan bukti relasi yang unik, misalnya pengenal sampel dari sumber asal atau kecocokan gabungan atribut yang terverifikasi. Nama area yang ambigu, titik pusat kota, dan titik pusat kotak grid yang disebut dalam nama area tidak digunakan sebagai pengganti stasiun.
+
+Jika pemulihan identitas stasiun pada CSV tidak memungkinkan, ekstraksi ulang sumber resmi England hanya dapat dipakai setelah kesetaraan skema, periode, dan aturan harmonisasinya didokumentasikan sebagai perubahan metode. Rekaman yang tidak memperoleh lokasi terverifikasi dikeluarkan dari himpunan evaluasi gabungan. Apabila metadata lokasi tidak dapat dipulihkan sama sekali, pengujian kontribusi kepadatan penduduk belum dapat dilaksanakan; hasil model fisikokimia saja tidak boleh dinyatakan telah menjawab pengujian tersebut.
+
+\subsection{Unit Analisis dan Kriteria Inklusi}
+
+Unit analisis klasifikasi adalah satu rekaman pada lokasi dan tanggal pengamatan sesuai struktur sumber. Pada lapisan mentah, identitas rekaman dibentuk dari checksum berkas dan posisi baris agar asalnya tetap dapat ditelusuri. Identitas ini dipertahankan setelah metadata stasiun berhasil dipulihkan. Dua baris dengan area dan tanggal yang sama tidak otomatis dianggap duplikat karena dapat mewakili sampel yang berbeda.
+
+Rekaman masuk eksperimen utama jika memenuhi seluruh syarat berikut:
+\begin{enumerate}
+    \item berasal dari England dengan tanggal yang valid pada 2000--2020;
+    \item mempunyai lokasi terverifikasi dan kunci pengelompokan yang konsisten;
+    \item mempunyai delapan nilai fisikokimia yang tersedia dan lolos pemeriksaan dasar;
+    \item mempunyai skor WQI sumber yang valid serta asal perhitungan yang terdokumentasi; dan
+    \item memperoleh nilai kepadatan penduduk yang valid pada sel dan tahun yang sesuai.
+\end{enumerate}
+
+Kriteria diterapkan sebelum pembagian data tanpa melihat hasil model. Jumlah rekaman dilaporkan pada setiap tahap: masukan, salinan duplikat, tanggal tidak valid, lokasi tidak terverifikasi, parameter tidak memenuhi syarat, target tidak valid, serta pencocokan raster yang gagal. Alasan eksklusi utama mengikuti urutan pemeriksaan sehingga satu baris tidak dihitung berulang dalam jumlah penghapusan.
+
+\subsection{Definisi Operasional Variabel}
+
+\begin{table}[H]
+    \centering
+    \caption{Variabel dan perannya dalam penelitian}
+    \label{tab:bab3-variabel}
+    \small
+    \renewcommand{\arraystretch}{1.16}
+    \begin{tabularx}{\linewidth}{@{}p{3.0cm}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}X@{}}
+        \toprule
+        Variabel & Satuan & Peran \\
+        \midrule
+        Amonia & mg/L & Prediktor; bentuk kimia diperiksa pada metadata \\
+        BOD$_5$ & mg/L & Prediktor kebutuhan oksigen biokimia lima hari \\
+        DO & mg/L & Prediktor oksigen terlarut \\
+        Ortofosfat & mg/L & Prediktor; basis massa P atau PO$_4$ diverifikasi \\
+        pH & Tanpa satuan & Prediktor derajat keasaman \\
+        Suhu & $^{\circ}$C & Prediktor suhu air \\
+        Nitrogen & mg/L & Prediktor dengan fraksi nitrogen mengikuti sumber \\
+        Nitrat & mg/L & Prediktor; basis massa N atau NO$_3$ diverifikasi \\
+        \texttt{pop\_density} & Penduduk per km$^2$ & Fitur tambahan dari raster tahunan \\
+        Skor WQI sumber & 0--100 & Dasar pemetaan kelas; dilarang menjadi prediktor \\
+        Kelas WQI & Lima kategori & Target klasifikasi \\
+        Lokasi dan tanggal & Identitas dan waktu & Kunci integrasi, kelompok, dan audit \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Nama kolom yang serupa tidak menjamin basis kimia yang sama. Amonia sebagai NH$_3$ tidak langsung disamakan dengan total amonia sebagai N, demikian pula ortofosfat dan nitrat dengan basis massa berbeda. Konversi hanya dilakukan jika bentuk asal diketahui, disertai rumus dan faktor yang tercatat. Negara, nama area, koordinat, tahun, serta identitas lokasi tidak dimasukkan sebagai prediktor agar daftar fitur tetap sesuai batasan penelitian.
+
+\section{Alat dan Lingkungan Penelitian}
+
+\subsection{Perangkat Keras}
+
+Eksperimen direncanakan pada satu komputer lokal dengan kebutuhan awal sedikitnya empat inti CPU logis, RAM 16 GB, dan ruang SSD kosong 30 GB. Angka tersebut merupakan sasaran penyediaan sumber daya, bukan spesifikasi perangkat yang diklaim sudah digunakan. Sebelum pengukuran, model prosesor, jumlah inti fisik dan logis, kapasitas RAM, media penyimpanan, sistem operasi, dan batas sumber daya kontainer dicatat.
+
+Pandas dijalankan dalam satu proses dengan pustaka numerik dibatasi satu utas, sedangkan Spark dijalankan secara lokal dengan jumlah inti pekerja yang ditentukan sebelum pengukuran. Batas CPU dan memori yang tersedia bagi kedua pipeline dibuat sama; pemanfaatan paralelisme merupakan bagian dari perlakuan. Layanan yang tidak dibutuhkan dihentikan selama pengukuran. Hasilnya berlaku untuk lingkungan satu mesin dan tidak digunakan sebagai bukti skalabilitas klaster banyak simpul.
+
+\subsection{Perangkat Lunak}
+
+\begin{table}[H]
+    \centering
+    \caption{Perangkat lunak dan fungsinya}
+    \label{tab:bab3-perangkat}
+    \small
+    \renewcommand{\arraystretch}{1.16}
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.8cm}>{\raggedright\arraybackslash}X@{}}
+        \toprule
+        Perangkat lunak & Fungsi \\
+        \midrule
+        Python, Pandas, NumPy & Pipeline sekuensial dan perhitungan pendukung \\
+        Apache Spark dan PySpark & Transformasi paralel pada mesin lokal \\
+        Rasterio/GDAL, GeoPandas & Pemeriksaan koordinat dan pembacaan raster \\
+        MinIO & Penyimpanan objek setiap lapisan \\
+        Apache Airflow & Pengaturan dependensi dan penjadwalan pekerjaan \\
+        Parquet dan PyArrow & Penyimpanan tabel dengan skema konsisten \\
+        scikit-learn dan XGBoost & Pemodelan dan evaluasi klasifikasi \\
+        MLflow & Pelacakan konfigurasi, metrik, serta artefak \\
+        Apache Superset & Penyajian ringkasan dan hasil eksperimen \\
+        Docker Compose & Pengaturan layanan dan dependensi lingkungan \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Implementasi utama memilih MinIO dan Parquet untuk memperjelas alternatif MinIO/HDFS serta Parquet/Delta Lake pada rancangan awal. Penelitian tidak membandingkan teknologi penyimpanan. Versi pustaka, dependensi Java untuk Spark, citra kontainer, dan konfigurasi dikunci sebelum pengujian. Model dilatih dengan pustaka Python pada satu mesin; evaluasi Spark difokuskan pada persiapan data, bukan percepatan pelatihan model terdistribusi.
+
+\par\noindent\begin{minipage}{\linewidth}
+\section{Alur dan Tahapan Penelitian}
+
+Gambar \ref{fig:bab3-alur} menempatkan audit kelayakan sebelum integrasi dan pemodelan. Kejelasan lokasi, kesesuaian tahun, dan asal label menentukan apakah eksperimen dapat menjawab pertanyaan penelitian.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=.2]{gambar/contoh-gambar-miring.png}
-    \caption{Komputer}
-    \label{fig:komputer}
+    \begin{tikzpicture}[
+        font=\small, node distance=0.42cm,
+        tahap/.style={draw, rounded corners=2pt, align=center,
+            text width=11.3cm, inner sep=6pt, fill=gray!5},
+        panah/.style={-{Stealth}, semithick}
+    ]
+        \node[tahap] (audit) {Studi pustaka dan audit kelayakan\\Sumber, skema, metadata lokasi, tahun, satuan, dan target};
+        \node[tahap, below=of audit, fill=brown!15] (bronze) {Bronze: ingesti dan pencatatan versi\\CSV air, raster, metadata lokasi, dan kode sumber WQI};
+        \node[tahap, below=of bronze, fill=gray!15] (silver) {Silver: pembersihan dan integrasi\\Validasi, deduplikasi, pemulihan lokasi, dan ekstraksi raster};
+        \node[tahap, below=of silver, fill=yellow!15] (gold) {Gold: tabel analitik dan manifest partisi\\Delapan parameter, kepadatan penduduk, serta kelas WQI};
+        \node[tahap, below=of gold] (uji) {Pengujian Pandas dan Spark\\Kesetaraan keluaran, variasi ukuran data, dan pengulangan};
+        \node[tahap, below=of uji, fill=blue!8] (model) {Empat skenario klasifikasi pada partisi yang sama\\RF dan XGBoost, masing-masing tanpa/dengan kepadatan penduduk};
+        \node[tahap, below=of model] (eval) {Evaluasi dan penyajian hasil\\Waktu, throughput, akurasi, F1 makro, dan matriks konfusi};
+        \draw[panah] (audit) -- (bronze);
+        \draw[panah] (bronze) -- (silver);
+        \draw[panah] (silver) -- (gold);
+        \draw[panah] (gold) -- (uji);
+        \draw[panah] (uji) -- (model);
+        \draw[panah] (model) -- (eval);
+    \end{tikzpicture}
+    \caption{Tahapan operasional penelitian}
+    \label{fig:bab3-alur}
 \end{figure}
 
+Studi pustaka menghasilkan definisi variabel dan rancangan pengujian. Audit menghasilkan kamus data serta catatan kelayakan integrasi. Pembangunan pipeline menghasilkan tabel berlapis dengan riwayat transformasi. Pengukuran baru dilakukan setelah keluaran Pandas dan Spark terbukti setara. Himpunan analitik kemudian dipakai pada empat skenario model, diikuti analisis selisih dan pelaporan.
+\end{minipage}\par
 
-\section{Program}
-Untuk melampirkan potongan program dapat menggunakan listing, sebagai contoh
+\section{Perancangan Pipeline Data}
 
-\begin{lstlisting}[language=Python,caption={Program perhitungan bilangan prima}, label={lst:bilanganprima}]
-import numpy as np
+\subsection{Lapisan Bronze: Ingesti dan Ketertelusuran}
 
-def incmatrix(genl1,genl2):
-    m = len(genl1)
-    n = len(genl2)
-    M = None #to become the incidence matrix
-    VT = np.zeros((n*m,1), int)  #dummy variable
+Lapisan \textit{Bronze} menyimpan salinan sumber tanpa mengubah nilai pengukuran, mengikuti prinsip pematangan kualitas data dalam Medallion Architecture \cite{databricks_medallion_2024}. Objek dipisahkan menjadi data air, raster per tahun, metadata lokasi, dan notebook pembentukan WQI. Setiap berkas mempunyai alamat sumber, tanggal pengambilan, versi, lisensi, ukuran, dan checksum SHA-256.
 
-    #compute the bitwise xor matrix
-    M1 = bitxormatrix(genl1)
-    M2 = np.triu(bitxormatrix(genl2),1)
+Ingesti melalui Airflow mempunyai identitas eksekusi yang unik. Pengulangan pada versi masukan yang sama tidak boleh menggandakan rekaman. Keluaran ditandai selesai hanya setelah seluruh berkas berhasil ditulis dan divalidasi. Berkas gagal dipisahkan agar tahap berikutnya tidak membaca hasil parsial. Salinan mentah dipertahankan untuk pemeriksaan ulang.
 
-    for i in range(m-1):
-        for j in range(i+1, m):
-            [r,c] = np.where(M2 == M1[i,j])
-            for k in range(len(r)):
-                VT[(i)*n + r[k]] = 1;
-                VT[(i)*n + c[k]] = 1;
-                VT[(j)*n + r[k]] = 1;
-                VT[(j)*n + c[k]] = 1;
+\subsection{Lapisan Silver: Pembersihan dan Harmonisasi}
 
-                if M is None:
-                    M = np.copy(VT)
-                else:
-                    M = np.concatenate((M, VT), 1)
+Pandas dan Spark menerapkan urutan deterministik yang sama, yaitu:
+\begin{enumerate}
+    \item membaca skema eksplisit, menormalkan nama kolom, mengubah tanggal ke format baku, dan menyaring wilayah serta periode penelitian;
+    \item memeriksa duplikasi menggunakan asal rekaman dan isi pengamatan; hanya salinan identik yang terkonfirmasi sebagai penggandaan teknis dibuang;
+    \item memeriksa tipe numerik, unit, nilai tidak terhingga, konsentrasi negatif, dan pH di luar 0--14;
+    \item memulihkan metadata lokasi dan menyesuaikan sistem koordinat; serta
+    \item menggabungkan kepadatan penduduk menurut sel raster dan tahun.
+\end{enumerate}
 
-                VT = np.zeros((n*m,1), int)
+Nilai ekstrem yang masih mungkin secara fisik tidak langsung dihapus berdasarkan persentil. Pemeriksaan distribusi hanya menandai pengamatan untuk penelusuran. Suhu di bawah nol tidak dinyatakan salah semata-mata karena bernilai negatif. Setiap koreksi harus mempunyai alasan terdokumentasi dan berlaku sama pada dua implementasi.
 
-    return M
-\end{lstlisting}
+Eksperimen utama menggunakan rekaman lengkap pada delapan parameter dan kepadatan penduduk sehingga tidak memerlukan imputasi tambahan. Dataset terbitan sudah melalui harmonisasi serta imputasi oleh penerbit; nilai hasil imputasi mungkin tidak dapat dipisahkan dari pengukuran jika penandanya tidak disediakan. Karena itu, lengkap berarti lengkap pada berkas yang tersedia, bukan jaminan semua nilai diukur langsung. Target yang hilang tidak diisi dari statistik seluruh data.
 
+\subsection{Integrasi Spasial dan Temporal}
 
+Titik terverifikasi dikonversi ke sistem koordinat raster sebelum ekstraksi. Untuk setiap lokasi dan tahun yang unik, transformasi geospasial raster menghasilkan indeks baris serta kolom sel. Nilai sel yang memuat titik menjadi \texttt{pop\_density}. Pengambilan nilai sel secara langsung dipilih untuk eksperimen utama; interpolasi bilinear dan rata-rata wilayah penyangga tidak diterapkan.
 
-% Baris ini digunakan untuk membantu dalam melakukan sitasi
-% Karena diapit dengan comment, maka baris ini akan diabaikan
-% oleh compiler LaTeX.
-\begin{comment}
-\bibliography{daftar-pustaka}
-\end{comment}
+Tabel pencarian memiliki kunci unik tahun, indeks baris, dan indeks kolom. Rekaman air digabungkan secara banyak-ke-satu dengan tabel tersebut. Cara ini menghindari konversi seluruh raster menjadi CSV dan memastikan lokasi dalam sel sama menerima nilai sama pada tahun yang sama. Jumlah baris sebelum dan sesudah penggabungan diperiksa untuk mencegah penggandaan pengamatan.
+
+Titik di luar cakupan dan sel \textit{NoData} dianggap tidak tersedia. Nilai nol yang sah dipertahankan karena dapat menyatakan sel tanpa penduduk. Titik tidak digeser otomatis ke sel daratan terdekat. Tahun, identitas raster, serta indeks sel disimpan sebagai metadata. Nilai pada sel stasiun ditafsirkan sebagai konteks lokal dan tidak mewakili kepadatan seluruh daerah tangkapan air.
+
+\subsection{Lapisan Gold: Tabel Analitik}
+
+Tabel \textit{Gold} memuat identitas rekaman, kelompok lokasi, tanggal, delapan parameter, kepadatan penduduk, skor, dan kelas WQI. Skema serta presisi numerik diseragamkan. Tabel ditulis sebagai Parquet dengan kompresi Snappy dan aturan partisi tahun yang sama. Tabel audit dan manifest pembagian data disimpan terpisah.
+
+Skor WQI, kelas, dan komponen perhitungannya dikeluarkan dari prediktor. Tampilan delapan dan sembilan fitur memakai daftar identitas rekaman yang sama. Rekaman tanpa kepadatan penduduk tidak dimasukkan hanya ke model dasar karena perubahan populasi evaluasi akan mengacaukan penilaian kontribusi fitur.
+
+\section{Pembentukan Target Klasifikasi WQI}
+
+\subsection{Pemetaan Skor ke Kelas}
+
+Target utama diperoleh dari kolom \texttt{CCME\_Values} pada dataset terbitan. Skor harus bernilai berhingga dalam rentang 0--100. Kelas dipetakan ulang tanpa pembulatan menurut Tabel \ref{tab:bab3-kelas}, yang mengoperasionalkan batas kategori CCME untuk nilai kontinu.\footnote{\label{fn:bab3-ccme}Manual CCME pembaruan 2017 tersedia pada \url{https://ccme.ca/en/res/wqimanualen.pdf}, diakses 24 Oktober 2026.} Label sumber dibandingkan dengan hasil pemetaan dan ketidaksesuaian ditelusuri sebelum data dikunci.
+
+\begin{table}[H]
+    \centering
+    \caption{Aturan kelas dari skor WQI kontinu}
+    \label{tab:bab3-kelas}
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{0.86\linewidth}{@{}cp{4.1cm}X@{}}
+        \toprule
+        Kode & Interval skor $s$ & Kelas \\
+        \midrule
+        0 & $0\leq s<45$ & \textit{Poor} \\
+        1 & $45\leq s<65$ & \textit{Marginal} \\
+        2 & $65\leq s<80$ & \textit{Fair} \\
+        3 & $80\leq s<95$ & \textit{Good} \\
+        4 & $95\leq s\leq100$ & \textit{Excellent} \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Kode 0--4 merupakan representasi kategori, bukan besaran dengan jarak galat numerik setara. Batas kelas tidak disesuaikan untuk menyeimbangkan data atau menaikkan kinerja model. Skor, label, dan seluruh atribut turunannya tidak boleh bocor ke matriks fitur.
+
+\subsection{Audit Perhitungan Sumber}
+
+Pemeriksaan notebook \texttt{Data\_Processing\_Harmonization.ipynb} memperlihatkan penghitungan per baris, pemeriksaan semua parameter sebagai batas maksimum, dan penyebut berdasarkan jumlah kolom DataFrame.\textsuperscript{\ref{fn:bab3-dataset}} Hal tersebut harus dibedakan dari penerapan indeks pada rangkaian pengujian dalam suatu periode. Audit merekam versi notebook, nilai acuan, arah perbandingan, kolom yang masuk penyebut, dan kesesuaian skor hasil reproduksi dengan skor terbitan.
+
+Untuk kerangka CCME, komponen cakupan dan frekuensi dirumuskan dengan jumlah variabel $V$, variabel gagal $V_f$, jumlah uji sah $N$, serta uji gagal $N_f$ sebagai berikut:
+\begin{equation}
+    F_1=100\frac{V_f}{V},\qquad F_2=100\frac{N_f}{N}.
+    \label{eq:bab3-faktor}
+\end{equation}
+Penyimpangan uji $x_i$ terhadap batas maksimum $U_i$ atau batas minimum positif $L_i$ dinyatakan sebagai:
+\begin{equation}
+    e_i=\begin{cases}
+        x_i/U_i-1,&x_i>U_i,\\
+        L_i/x_i-1,&0<x_i<L_i,\\
+        0,&\text{jika memenuhi acuan}.
+    \end{cases}
+    \label{eq:bab3-excursion}
+\end{equation}
+Pada acuan rentang digunakan batas yang dilanggar. Nilai nol pada variabel dengan batas minimum positif memerlukan penanganan limit, bukan pembagian dengan nol. Komponen amplitudo dan skor adalah:
+\begin{equation}
+    \mathrm{nse}=\frac{\sum_{i=1}^{N}e_i}{N},\qquad
+    F_3=\frac{\mathrm{nse}}{0{,}01\,\mathrm{nse}+0{,}01},
+    \label{eq:bab3-amplitudo}
+\end{equation}
+\begin{equation}
+    s=100-\frac{\sqrt{F_1^2+F_2^2+F_3^2}}{1{,}732}.
+    \label{eq:bab3-wqi}
+\end{equation}
+
+Pedoman CCME memerlukan sekumpulan pengujian pada lokasi dan periode yang ditetapkan, dengan batas minimum empat parameter dan empat kunjungan per tahun serta anjuran cakupan lebih besar.\textsuperscript{\ref{fn:bab3-ccme}} Oleh karena notebook sumber menghitung skor per baris dan mempunyai perbedaan implementasi, target utama disebut kelas WQI adaptasi dataset. Target tersebut tidak diklaim sebagai penilaian tahunan yang memenuhi seluruh pedoman CCME atau sebagai status mutu resmi England.
+
+Reproduksi skor sumber dilakukan terpisah dari pemeriksaan rumus yang sesuai pedoman. Sebagai pemeriksaan awal, skor baris pertama pada cuplikan CSV, sekitar 42,8474, dapat direproduksi memakai delapan acuan notebook dan penyebut 12, bukan 8. Contoh ini menunjukkan pentingnya menyimpan skema yang digunakan saat penerbit membentuk skor. Pemeriksaan tersebut tidak membuktikan seluruh baris benar; audit lanjutan melaporkan jumlah ketidaksesuaian kelas dan selisih skor pada data yang dipakai.
+
+Penelitian mempertahankan label terbitan sebagai target otomasi agar tidak mencampurkan perubahan definisi label dengan perbandingan model. Nilai acuan penerbit tidak dinyatakan sebagai baku mutu lokal. Jika diperlukan pembentukan ulang WQI yang memenuhi pedoman, sumber nilai acuan, arah batas, periode agregasi, dan kecukupan pengukuran harus ditetapkan melalui perubahan rancangan sebelum evaluasi. Tidak ada nilai acuan baru yang dibuat tanpa sumber.
+
+\subsection{Batas Interpretasi Target}
+
+Karena label berasal dari parameter pada pengamatan yang sama, keluaran utama diposisikan sebagai otomasi klasifikasi, bukan ramalan kualitas air masa depan. Implementasi aturan sumber yang berhasil direproduksi dipakai sebagai pembanding deterministik untuk memperjelas manfaat praktis model. Akurasi tinggi terhadap label adaptasi tidak dengan sendirinya membuktikan ketepatan ekologis label tersebut.
+
+Kepadatan penduduk tidak menjadi unsur tambahan pada rumus target. Kenaikan kinerja setelah penambahan fitur, jika ada, dapat berkaitan dengan cara model mendekati aturan, korelasi spasial, atau karakteristik data terbitan. Temuan dibatasi sebagai perubahan kinerja klasifikasi; penelitian tidak menyimpulkan hubungan sebab-akibat antara kepadatan penduduk dan pencemaran.
+
+\section{Pengujian Kinerja Pipeline}
+
+\subsection{Kesetaraan Pekerjaan dan Keluaran}
+
+Kedua implementasi membaca data \textit{Bronze}, membersihkan rekaman, mengintegrasikan raster, memetakan kelas, serta menulis \textit{Silver} dan \textit{Gold}. Versi CSV, metadata, raster, konfigurasi, tujuan penyimpanan, dan format keluaran dibuat sama. Mekanisme pemrosesan paralel Spark \cite{zaharia_apache_2016} menjadi dasar pemilihan alat, sedangkan keunggulan aktual ditentukan melalui eksperimen.
+
+Kesetaraan diperiksa berdasarkan himpunan identitas rekaman, jumlah baris, alasan eksklusi, skema, kelas, dan nilai fitur. Identitas, tanggal, dan kelas harus sama persis. Untuk nilai numerik digunakan toleransi $|a-b|\leq10^{-8}+10^{-6}|b|$ setelah unit diseragamkan. Urutan baris dan jumlah berkas Parquet tidak harus sama karena dapat dipengaruhi partisi komputasi. Hasil waktu tidak dipakai untuk menyimpulkan keunggulan jika kesetaraan belum terpenuhi.
+
+\subsection{Ukuran Data dan Prosedur Pengulangan}
+
+Lima tingkat ukuran masukan direncanakan sebesar 10\%, 25\%, 50\%, 75\%, dan 100\% dari rekaman England pada periode penelitian. Subset dibentuk melalui ambang hash identitas rekaman secara deterministik dan bertingkat, sehingga subset kecil menjadi bagian subset besar. Jumlah baris serta ukuran berkas aktual selalu dilaporkan.
+
+Pembuatan berkas subset dilakukan sebelum pengukuran. Setiap pasangan ukuran dan mesin menjalani satu pemeriksaan awal yang tidak masuk hasil, kemudian lima pengulangan terukur. Urutan Pandas dan Spark diseimbangkan dengan seed tetap. Setiap pengulangan menggunakan proses Python baru, sesi Spark baru bila terkait, dan direktori keluaran baru. Lookup raster dihitung kembali pada setiap pengulangan terukur.
+
+Data tidak digandakan secara sintetis untuk mengklaim skala lebih besar. Eksekusi yang kehabisan memori dicatat beserta ukuran, batas sumber daya, dan penyebabnya. Kegagalan tidak diberi waktu nol atau dicampurkan ke ringkasan waktu eksekusi berhasil.
+
+\subsection{Batas Pengukuran dan Indikator}
+
+Waktu ujung ke ujung diukur sejak sebelum proses pekerja dimulai hingga proses selesai menulis dan memvalidasi \textit{Gold}. Cakupan mencakup inisialisasi Python, inisialisasi Spark pada skenario terkait, pembacaan CSV dan raster dari \textit{Bronze}, pembentukan lookup, transformasi, serta penulisan kedua lapisan. Penulisan Spark dipastikan selesai agar waktu tidak hanya mengukur pembentukan rencana eksekusi.
+
+Unduhan internet, pembangunan citra, penyiapan layanan, pembuatan subset, penjadwalan Airflow, pelatihan, dan dashboard tidak masuk batas pengukuran mesin. Cache DataFrame tidak dipakai antar eksekusi. Pengujian tidak disebut \textit{cold cache} karena cache sistem operasi belum tentu dapat dikosongkan; pengaruh urutan dikurangi melalui penyeimbangan pengujian dan dicatat sebagai keterbatasan.
+
+Dengan jam monotonik pada waktu awal $t_0$ dan akhir $t_1$, serta jumlah baris masukan $N_{\mathrm{in}}$, metrik dihitung sebagai:
+\begin{equation}
+    T=t_1-t_0,\qquad Q=\frac{N_{\mathrm{in}}}{T}.
+    \label{eq:bab3-throughput}
+\end{equation}
+Throughput $Q$ dinyatakan dalam baris masukan per detik. Jumlah baris keluaran dilaporkan terpisah agar penghapusan data tidak tampak sebagai peningkatan throughput. Percepatan pada ukuran sama diperoleh dari:
+\begin{equation}
+    S=\frac{\widetilde{T}_{\mathrm{Pandas}}}{\widetilde{T}_{\mathrm{Spark}}},
+    \label{eq:bab3-speedup}
+\end{equation}
+dengan $\widetilde{T}$ sebagai median lima pengulangan. Nilai $S>1$ menunjukkan waktu Spark lebih singkat. Median, rentang antarkuartil, dan seluruh hasil mentah disajikan. Grafik ukuran data terhadap waktu dipakai untuk menilai apakah keuntungan paralelisme sudah mengimbangi biaya inisialisasi dalam rentang data yang tersedia.
+
+\section{Pemodelan dan Eksperimen Fitur}
+
+\subsection{Pembagian Data Berbasis Kelompok Spasial}
+
+Pembagian dilakukan setelah himpunan rekaman yang memenuhi syarat dikunci. Unit kelompok adalah lokasi pemantauan. Lokasi berbeda dalam sel WorldPop yang sama digabungkan ke satu kelompok, sehingga lokasi sangat berdekatan tidak masuk partisi berbeda hanya karena identitas stasiunnya berbeda. Konsistensi grid raster antartahun diperiksa sebelum kelompok dibentuk.
+
+Sekitar 20\% kelompok ditahan sebagai data uji dan 80\% menjadi data pengembangan, menggunakan seed 42. Proporsi dihitung pada kelompok sehingga proporsi rekaman dapat berbeda. Pembagian mempertimbangkan distribusi kelas sejauh memungkinkan tanpa memecah kelompok. Jumlah kelompok, rekaman, dan dukungan tiap kelas dilaporkan; manifest yang sama digunakan pada seluruh skenario.
+
+Data pengembangan dipakai untuk validasi silang lima lipatan berdasarkan kelompok. Tidak ada kelompok yang muncul pada bagian latih dan validasi dalam lipatan sama. Jika jumlah kelompok kelas minoritas tidak mencukupi, jumlah lipatan dikurangi hingga paling sedikit dua sebelum pelatihan. Kelas tidak digabungkan untuk mengejar skor. Kelas yang tidak mempunyai dukungan evaluasi tetap disebut sebagai keterbatasan.
+
+Data uji tidak digunakan untuk memilih hiperparameter, fitur, atau seed. Rancangan ini menilai klasifikasi pada lokasi yang tidak digunakan saat pelatihan dalam periode yang sama. Rancangan tidak menguji generalisasi ke tahun masa depan maupun menghilangkan seluruh ketergantungan antarwilayah yang bersebelahan.
+
+\subsection{Skenario Perbandingan}
+
+\begin{table}[H]
+    \centering
+    \caption{Empat skenario klasifikasi}
+    \label{tab:bab3-skenario}
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\linewidth}{@{}p{1.5cm}p{2.9cm}>{\raggedright\arraybackslash}Xc@{}}
+        \toprule
+        Kode & Algoritma & Fitur & Jumlah \\
+        \midrule
+        RF-8 & Random Forest & Parameter fisikokimia & 8 \\
+        RF-9 & Random Forest & Fisikokimia dan kepadatan penduduk & 9 \\
+        XGB-8 & XGBoost & Parameter fisikokimia & 8 \\
+        XGB-9 & XGBoost & Fisikokimia dan kepadatan penduduk & 9 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Random Forest menggunakan pengacakan data dan fitur dalam sekumpulan pohon \cite{breiman_random_2001}, sedangkan XGBoost membangun pohon secara bertahap disertai pengaturan kompleksitas \cite{chen_xgboost_2016}. Keduanya mewakili pendekatan ansambel yang berbeda pada data tabular. Standardisasi skala tidak diterapkan agar satuan fisik tetap mudah dibaca.
+
+Analisis utama kontribusi fitur memakai konfigurasi terbaik skenario delapan fitur yang kemudian digunakan kembali pada sembilan fitur. Dengan demikian, satu-satunya perubahan dalam pasangan ini adalah fitur tambahan. Keempat skenario juga disetel terpisah dengan anggaran setara untuk membandingkan hasil terbaik menurut validasi. Hasil konfigurasi tetap dan hasil penyetelan terpisah disajikan terpisah agar interpretasinya jelas.
+
+\subsection{Penyetelan Hiperparameter}
+
+Pencarian acak menggunakan 20 konfigurasi per skenario dan lipatan yang sama. F1 makro menjadi ukuran pemilihan utama. Jika nilai rata-rata validasi sama sampai empat angka desimal, dipilih konfigurasi berkompleksitas lebih kecil. Aturan dan ruang pencarian ditetapkan sebelum evaluasi uji.
+
+\begin{table}[H]
+    \centering
+    \caption{Ruang pencarian hiperparameter}
+    \label{tab:bab3-hiperparameter}
+    \small
+    \renewcommand{\arraystretch}{1.14}
+    \begin{tabularx}{\linewidth}{@{}p{2.2cm}p{4.4cm}>{\raggedright\arraybackslash}X@{}}
+        \toprule
+        Algoritma & Hiperparameter & Kandidat \\
+        \midrule
+        Random Forest & \texttt{n\_estimators} & 200, 400, 600 \\
+        & \texttt{max\_depth} & 10, 20, tanpa batas \\
+        & \texttt{min\_samples\_leaf} & 1, 2, 5 \\
+        & \texttt{max\_features} & Akar kuadrat; 0,7 \\
+        \midrule
+        XGBoost & \texttt{n\_estimators} & 200, 400, 600 \\
+        & \texttt{max\_depth} & 3, 6, 9 \\
+        & \texttt{learning\_rate} & 0,03; 0,1 \\
+        & \texttt{subsample} & 0,8; 1,0 \\
+        & \texttt{colsample\_bytree} & 0,8; 1,0 \\
+        & \texttt{reg\_lambda} & 1, 5, 10 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+XGBoost menggunakan tujuan multikelas, keluaran probabilitas lima kelas, dan metode pohon \texttt{hist}. Prediksi adalah kelas berprobabilitas terbesar. Batas utas CPU dibuat sama pada kedua algoritma. Jumlah pohon dipilih melalui validasi silang tanpa penghentian dini yang mengakses data uji.
+
+Ketidakseimbangan kelas ditangani dengan bobot pengamatan dari bagian latih pada setiap lipatan. Bobot kelas $k$ adalah:
+\begin{equation}
+    w_k=\frac{n}{K\,n_k},
+    \label{eq:bab3-bobot}
+\end{equation}
+dengan $n$ jumlah pengamatan latih, $n_k$ jumlah kelas $k$ pada bagian latih, dan $K$ jumlah kelas. Kedua algoritma menerima kebijakan bobot yang sama. Validasi dan uji mempertahankan distribusi asli. Tidak dilakukan pembangkitan sampel sintetis sebelum pembagian kelompok.
+
+Konfigurasi terpilih dilatih ulang pada seluruh data pengembangan. Seed pelatihan 42, 43, dan 44 digunakan untuk memeriksa kestabilan dengan partisi tetap. Seed 42 ditetapkan sebagai pelaporan utama; variasi antarseed adalah pemeriksaan pengacakan algoritma dan tidak diperlakukan sebagai sampel lokasi baru.
+
+\section{Evaluasi dan Teknik Analisis}
+
+\subsection{Metrik Klasifikasi}
+
+Metrik utama adalah akurasi dan F1 makro. Untuk label aktual $y_i$, prediksi $\hat{y}_i$, dan jumlah pengamatan uji $n$, akurasi dirumuskan sebagai:
+\begin{equation}
+    \mathrm{Akurasi}=\frac{1}{n}\sum_{i=1}^{n}\mathbf{1}(y_i=\hat{y}_i).
+    \label{eq:bab3-akurasi}
+\end{equation}
+Presisi, \textit{recall}, dan F1 pada kelas $k$ adalah:
+\begin{equation}
+    P_k=\frac{TP_k}{TP_k+FP_k},\qquad
+    R_k=\frac{TP_k}{TP_k+FN_k},\qquad
+    F1_k=\frac{2P_kR_k}{P_k+R_k}.
+    \label{eq:bab3-metrik-kelas}
+\end{equation}
+Rata-rata F1 antarkelas dihitung sebagai:
+\begin{equation}
+    F1_{\mathrm{makro}}=\frac{1}{K}\sum_{k=1}^{K}F1_k.
+    \label{eq:bab3-f1-makro}
+\end{equation}
+
+Evaluasi memakai urutan lima label yang tetap. Penyebut nol diberi nilai nol dan ditandai dalam laporan. Kelas tanpa pengamatan aktual tetap ditampilkan dengan dukungan nol, sehingga keterbatasan cakupan tidak tersembunyi oleh penghapusan kelas dari evaluasi.
+
+Matriks konfusi disajikan sebagai jumlah dan proporsi terhadap kelas aktual. Presisi, \textit{recall}, F1, serta dukungan per kelas menjelaskan kesalahan pada kelas minoritas. Pembanding sederhana selalu memprediksi kelas terbanyak pada data latih. RMSE tidak digunakan karena kode kategori tidak mempunyai jarak numerik yang setara.
+
+\subsection{Selisih Kinerja dan Ketidakpastian}
+
+Kontribusi fitur untuk algoritma $A$ dihitung pada rekaman uji yang sama melalui:
+\begin{equation}
+    \Delta F1_A=F1_{A,9}-F1_{A,8},\qquad
+    \Delta\mathrm{Acc}_A=\mathrm{Acc}_{A,9}-\mathrm{Acc}_{A,8}.
+    \label{eq:bab3-delta}
+\end{equation}
+Selisih positif menunjukkan kenaikan, sedangkan selisih nol atau negatif menunjukkan tidak ada peningkatan pada pengujian tersebut. Selisih dilaporkan dalam poin persentase. Random Forest dan XGBoost dibandingkan pada himpunan fitur yang sama agar perbedaan algoritma tidak tercampur dengan jumlah fitur.
+
+Interval ketidakpastian dinilai dengan \textit{bootstrap} berpasangan 1.000 kali pada kelompok spasial data uji. Kelompok diambil dengan pengembalian dan seluruh rekaman kelompok terpilih disertakan. Sampel kelompok yang sama digunakan untuk dua model yang dibandingkan. Interval persentil 95\% diperoleh dari distribusi selisih pada prediksi model seed 42 yang sudah dikunci.
+
+Jumlah kelompok serta kelengkapan kelas per pengulangan dilaporkan karena kelompok atau kelas jarang dapat membuat interval tidak stabil. Interval yang melintasi nol menunjukkan arah perbedaan belum konsisten pada prosedur ini. Interval bersyarat pada model terlatih dan lokasi tersedia, serta tidak menghilangkan kemungkinan ketergantungan antarsel bertetangga. Analisis tidak diarahkan untuk membuktikan kausalitas urbanisasi.
+
+\subsection{Pelacakan Eksperimen dan Penyajian}
+
+MLflow mencatat versi data, checksum, versi kode, konfigurasi pembersihan, manifest partisi, daftar fitur, seed, hiperparameter, bobot kelas, dan metrik. Artefak meliputi model, prediksi per identitas rekaman, hasil validasi, matriks konfusi, alasan eksklusi, serta hasil mentah waktu pipeline. Eksekusi gagal tetap dicatat bersama penyebabnya.
+
+Superset menyajikan kelengkapan data, distribusi kelas, sebaran lokasi terverifikasi, perbandingan pipeline, dan empat skenario model. Angka dashboard diambil dari tabel hasil yang sama dengan laporan. Waktu respons dashboard tidak menjadi ukuran efisiensi pipeline.
+
+\section{Validitas dan Keterulangan Penelitian}
+
+Validitas internal dijaga melalui kesamaan rekaman, transformasi, partisi, dan anggaran pencarian. Bobot kelas dan hiperparameter dipelajari hanya dari bagian latih yang sesuai. Identitas lokasi serta turunan WQI dikeluarkan dari prediktor. Kesetaraan keluaran mencegah perbandingan waktu antara pipeline yang sebenarnya melakukan tugas berbeda.
+
+Validitas konstruk dibatasi oleh kepadatan pada sel stasiun sebagai proksi konteks lokal dan WQI adaptasi sebagai target otomasi. Nilai yang sudah diimputasi penerbit, ketidakpastian metadata lokasi, serta basis satuan adalah sumber galat yang diaudit. Seleksi rekaman lengkap dapat mengubah keterwakilan data; jumlah serta proporsi yang dipertahankan dibandingkan menurut tahun dan lokasi.
+
+Validitas eksternal terbatas pada England, tahun yang beririsan dengan WorldPop, rekaman yang memenuhi syarat, dan komputer lokal. Pemisahan lokasi membantu menilai generalisasi spasial, tetapi tidak menjamin kinerja serupa pada negara lain, masa depan, atau klaster. Data Indonesia tidak digunakan untuk validasi.
+
+Keterulangan didukung manifest sumber, checksum, konfigurasi berversi, citra kontainer, seed tetap, dan hasil mentah. Luaran mencakup pipeline berlapis, tabel analitik dengan audit, catatan tolok ukur, model, dan laporan perbandingan. Keberhasilan tidak mensyaratkan peningkatan akurasi tertentu, melainkan kelayakan data, kelengkapan pengukuran, serta kesimpulan yang dapat ditelusuri.
+
+\par\noindent\begin{minipage}{\linewidth}
+\section{Jadwal Kegiatan Penelitian}
+
+Kegiatan direncanakan selama enam bulan relatif sejak penelitian dimulai. Audit lokasi dan target menjadi prioritas karena hasilnya menentukan kelayakan eksperimen. Pengujian dilakukan sesudah aturan data dikunci. Jadwal dapat disesuaikan dengan kalender akademik dan hasil audit awal.
+
+\begin{table}[H]
+    \centering
+    \caption{Rencana jadwal penelitian}
+    \label{tab:bab3-jadwal}
+    \small
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabularx}{\linewidth}{@{}c>{\raggedright\arraybackslash}Xcccccc@{}}
+        \toprule
+        & & \multicolumn{6}{c}{Bulan ke-} \\
+        \cmidrule(lr){3-8}
+        No. & Kegiatan & 1 & 2 & 3 & 4 & 5 & 6 \\
+        \midrule
+        1 & Studi pustaka dan audit kelayakan & $\bullet$ & $\bullet$ & & & & \\
+        2 & Ingesti, metadata, dan konfigurasi & $\bullet$ & $\bullet$ & & & & \\
+        3 & Pipeline Silver--Gold dan audit WQI & & $\bullet$ & $\bullet$ & & & \\
+        4 & Validasi dan tolok ukur pipeline & & & $\bullet$ & $\bullet$ & & \\
+        5 & Pembagian data dan pelatihan & & & & $\bullet$ & $\bullet$ & \\
+        6 & Evaluasi, analisis, dan dashboard & & & & & $\bullet$ & $\bullet$ \\
+        7 & Penulisan dan perbaikan laporan & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Integrasi dinyatakan siap jika lokasi dan tahun dapat dicocokkan secara sah. Pemodelan dinyatakan siap jika asal target terdokumentasi, jumlah kelompok mendukung pembagian, dan kelas yang tersedia sudah dicatat. Ketika syarat belum terpenuhi, perubahan rancangan ditetapkan sebelum data uji dibuka dan dijelaskan dalam laporan.
+\end{minipage}\par
